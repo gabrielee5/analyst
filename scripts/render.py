@@ -86,7 +86,7 @@ def render_pdf(md_path: str, template_name: str = "default", output_path: str | 
     else:
         out_dir = md_file.parent / "output"
         out_dir.mkdir(exist_ok=True)
-        slug = md_file.stem
+        slug = md_file.parent.name
         out = out_dir / f"{slug}.pdf"
 
     # Render PDF
