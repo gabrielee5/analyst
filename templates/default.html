@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+    <!-- Cover Page -->
+    <div class="cover">
+        <div class="title">{{ title }}</div>
+        {% if subtitle %}
+        <div class="subtitle">{{ subtitle }}</div>
+        {% endif %}
+        <hr class="rule">
+        {% if date %}
+        <div class="date">{{ date }}</div>
+        {% endif %}
+        {% if author %}
+        <div class="author">{{ author }}</div>
+        {% endif %}
+    </div>
+
+    <!-- Table of Contents -->
+    {% if toc %}
+    <div class="toc-page">
+        <h2>Contents</h2>
+        <div class="toc">
+            {{ toc }}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Report Content -->
+    <div class="content">
+        {{ content }}
+    </div>
+
+</body>
+</html>

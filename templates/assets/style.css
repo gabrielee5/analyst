@@ -1,0 +1,486 @@
+/* ============================================================
+   Deep Research — Report Stylesheet
+   A clean, professional design for research reports.
+   ============================================================ */
+
+:root {
+    --accent: #1a365d;
+    --accent-light: #2c5282;
+    --text: #1a1a1a;
+    --text-muted: #4a5568;
+    --bg: #ffffff;
+    --bg-subtle: #f7fafc;
+    --border: #e2e8f0;
+    --border-light: #edf2f7;
+    --font-serif: Georgia, "Times New Roman", Times, serif;
+    --font-sans: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    --font-mono: "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+/* === Page Setup === */
+
+@page {
+    size: A4;
+    margin: 30mm 25mm 30mm 25mm;
+
+    @bottom-center {
+        content: counter(page);
+        font-family: var(--font-sans);
+        font-size: 9pt;
+        color: var(--text-muted);
+    }
+}
+
+@page :first {
+    @bottom-center {
+        content: none;
+    }
+}
+
+@page cover {
+    margin: 0;
+    @bottom-center {
+        content: none;
+    }
+}
+
+/* === Base === */
+
+html {
+    font-size: 11pt;
+}
+
+body {
+    font-family: var(--font-serif);
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* === Cover Page === */
+
+.cover {
+    page: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    page-break-after: always;
+    padding: 60mm 30mm;
+}
+
+.cover .title {
+    font-family: var(--font-sans);
+    font-size: 28pt;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1.2;
+    margin-bottom: 16pt;
+    letter-spacing: -0.5px;
+}
+
+.cover .subtitle {
+    font-family: var(--font-serif);
+    font-size: 14pt;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-bottom: 24pt;
+    max-width: 80%;
+}
+
+.cover .date {
+    font-family: var(--font-sans);
+    font-size: 11pt;
+    color: var(--text-muted);
+    margin-top: 12pt;
+}
+
+.cover .author {
+    font-family: var(--font-sans);
+    font-size: 10pt;
+    color: var(--text-muted);
+    margin-top: 4pt;
+}
+
+.cover .rule {
+    width: 60px;
+    height: 3px;
+    background: var(--accent);
+    border: none;
+    margin: 24pt auto;
+}
+
+/* === Table of Contents === */
+
+.toc-page {
+    page-break-after: always;
+}
+
+.toc-page h2 {
+    font-family: var(--font-sans);
+    font-size: 16pt;
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 6pt;
+    margin-bottom: 18pt;
+}
+
+.toc ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.toc li {
+    margin: 0;
+    padding: 0;
+}
+
+.toc > ul > li {
+    margin-bottom: 6pt;
+}
+
+.toc > ul > li > a {
+    font-family: var(--font-sans);
+    font-size: 11pt;
+    font-weight: 600;
+    color: var(--text);
+    text-decoration: none;
+}
+
+.toc > ul > li > ul > li > a {
+    font-family: var(--font-serif);
+    font-size: 10pt;
+    font-weight: 400;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding-left: 16pt;
+    display: block;
+    margin-top: 3pt;
+}
+
+.toc a:hover {
+    color: var(--accent);
+}
+
+/* === Headings === */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-sans);
+    color: var(--accent);
+    line-height: 1.3;
+    page-break-after: avoid;
+}
+
+.content h1 {
+    font-size: 22pt;
+    font-weight: 700;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 8pt;
+    margin-top: 36pt;
+    margin-bottom: 18pt;
+}
+
+.content h1:first-child {
+    display: none; /* Title is on the cover page */
+}
+
+h2 {
+    font-size: 16pt;
+    font-weight: 600;
+    margin-top: 30pt;
+    margin-bottom: 12pt;
+    padding-bottom: 4pt;
+    border-bottom: 1px solid var(--border);
+}
+
+h3 {
+    font-size: 13pt;
+    font-weight: 600;
+    margin-top: 22pt;
+    margin-bottom: 8pt;
+    color: var(--accent-light);
+}
+
+h4 {
+    font-size: 11pt;
+    font-weight: 600;
+    margin-top: 18pt;
+    margin-bottom: 6pt;
+    color: var(--text);
+}
+
+/* === Paragraphs & Inline === */
+
+p {
+    margin: 0 0 10pt 0;
+    orphans: 3;
+    widows: 3;
+}
+
+strong {
+    font-weight: 700;
+}
+
+em {
+    font-style: italic;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-color: var(--border);
+    text-underline-offset: 2px;
+}
+
+/* === Blockquotes === */
+
+blockquote {
+    margin: 16pt 0;
+    padding: 12pt 20pt;
+    border-left: 3px solid var(--accent);
+    background: var(--bg-subtle);
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+blockquote p {
+    margin: 0;
+}
+
+blockquote p + p {
+    margin-top: 8pt;
+}
+
+/* === Tables === */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16pt 0;
+    font-size: 10pt;
+    page-break-inside: avoid;
+}
+
+thead {
+    background: var(--accent);
+    color: #ffffff;
+}
+
+th {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    text-align: left;
+    padding: 8pt 12pt;
+}
+
+td {
+    padding: 8pt 12pt;
+    border-bottom: 1px solid var(--border-light);
+    vertical-align: top;
+}
+
+tr:nth-child(even) {
+    background: var(--bg-subtle);
+}
+
+/* === Code === */
+
+code {
+    font-family: var(--font-mono);
+    font-size: 9.5pt;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-light);
+    border-radius: 3px;
+    padding: 1pt 4pt;
+}
+
+pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 14pt 18pt;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin: 16pt 0;
+    font-size: 9pt;
+    line-height: 1.5;
+    page-break-inside: avoid;
+}
+
+pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+}
+
+/* Pygments / codehilite overrides */
+.highlight {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 14pt 18pt;
+    border-radius: 6px;
+    margin: 16pt 0;
+    font-size: 9pt;
+    line-height: 1.5;
+    page-break-inside: avoid;
+}
+
+.highlight pre {
+    background: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+}
+
+/* === Lists === */
+
+ul, ol {
+    margin: 8pt 0 12pt 0;
+    padding-left: 24pt;
+}
+
+li {
+    margin-bottom: 4pt;
+}
+
+li > ul, li > ol {
+    margin-top: 4pt;
+    margin-bottom: 0;
+}
+
+/* === Horizontal Rules === */
+
+hr {
+    border: none;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.3;
+    margin: 24pt 0;
+}
+
+/* === Footnotes === */
+
+.footnote {
+    font-size: 9pt;
+    line-height: 1.5;
+    color: var(--text-muted);
+    margin-top: 30pt;
+    padding-top: 12pt;
+    border-top: 1px solid var(--border);
+}
+
+.footnote ol {
+    padding-left: 16pt;
+}
+
+.footnote li {
+    margin-bottom: 4pt;
+}
+
+.footnote-ref {
+    font-size: 8pt;
+    vertical-align: super;
+    text-decoration: none;
+    color: var(--accent);
+}
+
+.footnote-backref {
+    text-decoration: none;
+    color: var(--accent);
+}
+
+/* === Admonitions / Callouts === */
+
+.admonition {
+    margin: 16pt 0;
+    padding: 14pt 18pt;
+    border-left: 4px solid var(--accent);
+    background: var(--bg-subtle);
+    border-radius: 0 4px 4px 0;
+    page-break-inside: avoid;
+}
+
+.admonition-title {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 10pt;
+    color: var(--accent);
+    margin: 0 0 6pt 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.admonition p:last-child {
+    margin-bottom: 0;
+}
+
+.admonition.warning {
+    border-left-color: #c05621;
+}
+
+.admonition.warning .admonition-title {
+    color: #c05621;
+}
+
+.admonition.danger {
+    border-left-color: #c53030;
+}
+
+.admonition.danger .admonition-title {
+    color: #c53030;
+}
+
+.admonition.tip, .admonition.insight {
+    border-left-color: #2b6cb0;
+}
+
+.admonition.tip .admonition-title,
+.admonition.insight .admonition-title {
+    color: #2b6cb0;
+}
+
+.admonition.note {
+    border-left-color: #4a5568;
+}
+
+.admonition.note .admonition-title {
+    color: #4a5568;
+}
+
+/* === Images / Figures === */
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 16pt auto;
+}
+
+figure {
+    margin: 16pt 0;
+    text-align: center;
+    page-break-inside: avoid;
+}
+
+figcaption {
+    font-size: 9pt;
+    font-style: italic;
+    color: var(--text-muted);
+    margin-top: 6pt;
+    text-align: center;
+}
+
+/* === Print Helpers === */
+
+.page-break {
+    page-break-after: always;
+}
+
+.no-break {
+    page-break-inside: avoid;
+}

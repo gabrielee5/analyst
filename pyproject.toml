@@ -1,0 +1,15 @@
+[project]
+name = "deep-research"
+version = "0.1.0"
+description = "Personal research workstation for producing deep, high-quality research reports as PDFs"
+requires-python = ">=3.12"
+dependencies = [
+    "weasyprint>=62.0",
+    "markdown>=3.7",
+    "Jinja2>=3.1",
+    "Pygments>=2.18",
+    "pyyaml>=6.0",
+]
+
+[dependency-groups]
+dev = []
