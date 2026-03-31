@@ -27,3 +27,4 @@ _site/
 *.swp
 *.swo
 *~
+.vercel

@@ -1,0 +1,11 @@
+.claude/
+.env
+.env.example
+.git/
+.gitignore
+_site/
+CLAUDE.md
+DESIGN.md
+README.md
+uv.lock
+pyproject.toml

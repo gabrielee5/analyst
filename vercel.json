@@ -1,3 +1,5 @@
 {
-  "outputDirectory": "_site"
+  "buildCommand": "python3 -m pip install markdown Jinja2 Pygments pyyaml python-dotenv && python3 scripts/publish.py build",
+  "outputDirectory": "_site",
+  "framework": null
 }
