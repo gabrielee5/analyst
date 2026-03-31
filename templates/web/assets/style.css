@@ -30,6 +30,17 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+.site-body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.site-body .container {
+    flex: 1;
+}
+
+
 /* === Universal Transitions === */
 
 button, a, input, select, textarea, .report-row, .pdf-download {
@@ -156,6 +167,7 @@ button, a, input, select, textarea, .report-row, .pdf-download {
    ============================================================ */
 
 .archive-header {
+    margin-top: 2.5rem;
     margin-bottom: 2.5rem;
     padding-bottom: 1.25rem;
     border-bottom: 0.85px solid #e5e7eb;
