@@ -171,6 +171,20 @@ This is the core research phase. **You MUST spawn parallel sub-agents** — one 
    - Print status after success: `📧 PDF emailed to <address>`
 6. Print final status: `📄 Report complete: research/<slug>/output/report.pdf`
 
+## Phase 7: Publish & Deploy
+
+1. Ensure the report's YAML frontmatter includes `published: true`.
+2. Build the website:
+   ```bash
+   uv run python scripts/publish.py build
+   ```
+3. Commit all changes (report, notes, domain profile) and push to origin:
+   ```bash
+   git add research/<slug>/ && git commit -m "add report: <report title>" && git push origin main
+   ```
+4. Vercel auto-deploys from main — no manual deploy needed.
+5. Print status: `🌐 Published & deployed — site will update automatically.`
+
 ## Error Handling
 
 - If any phase fails, diagnose the error, fix it, and retry before moving on.
@@ -191,5 +205,6 @@ Print a summary card at the end:
   Sources:  <N sources cited>
   Template: <template used>
   Output:   research/<slug>/output/report.pdf
+  Web:      deployed to production
 ══════════════════════════════════════════
 ```

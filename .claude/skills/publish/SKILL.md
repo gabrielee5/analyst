@@ -27,10 +27,13 @@ You build the static research website from all reports marked `published: true`.
    ```
    This builds the site and starts a local server at http://localhost:8000.
 
-4. If the user wants to deploy, they can use Vercel CLI:
+4. **Deploy:** After a successful build, commit any new or changed reports and push to trigger Vercel auto-deploy:
    ```bash
-   vercel deploy --prod
+   git add research/ && git commit -m "publish reports" && git push origin main
    ```
+   Vercel auto-deploys from main — no manual `vercel deploy` needed.
+
+5. Print status: `🌐 Published & deployed — site will update automatically.`
 
 ## Notes
 
@@ -38,3 +41,4 @@ You build the static research website from all reports marked `published: true`.
 - PDFs are automatically included if they exist in the report's `output/` directory.
 - The site is output to `_site/` at the project root.
 - Templates are in `templates/web/` and match the PDF template variants (default, academic, financial, briefing).
+- Vercel is connected to the GitHub repo and auto-deploys on every push to main.
