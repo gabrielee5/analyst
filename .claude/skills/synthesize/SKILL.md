@@ -25,7 +25,7 @@ You turn accumulated research notes into a polished, cohesive report. This skill
 title: "<Report Title>"
 subtitle: "<Descriptive subtitle>"
 date: "<today's date>"
-author: "Deep Research"
+author: "Fabietti.xyz"
 template: "default"
 ---
 ```

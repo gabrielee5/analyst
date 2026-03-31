@@ -1,6 +1,6 @@
-# Deep Research
+# Fabietti.xyz — Research Workstation
 
-A personal research workstation for producing deep, high-quality research reports as beautifully typeset PDFs. Built for use with [Claude Code](https://claude.ai/code).
+Research workstation by [Fabietti.xyz](https://www.fabietti.xyz/) for producing deep, high-quality research reports as beautifully typeset PDFs. Built for use with [Claude Code](https://claude.ai/code).
 
 ## Quick Start
 

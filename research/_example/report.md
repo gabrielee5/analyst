@@ -2,7 +2,7 @@
 title: "The Current State and Future of Nuclear Fusion Energy"
 subtitle: "From Laboratory Milestones to Commercial Prospects — An Assessment of Where Fusion Stands in 2026"
 date: "2026-03-31"
-author: "Deep Research"
+author: "Fabietti.xyz"
 template: "default"
 ---
 

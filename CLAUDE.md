@@ -1,8 +1,8 @@
-# Deep Research — Claude Code Instructions
+# Fabietti.xyz — Research Workstation
 
 ## What This Repo Is
 
-A personal research workstation for producing deep, high-quality research reports as beautifully typeset PDFs. Pick any subject, do rigorous research, and get a polished PDF report.
+The Fabietti.xyz research workstation for producing deep, high-quality research reports as beautifully typeset PDFs. All reports are branded as Fabietti.xyz publications. Pick any subject, do rigorous research, and get a polished PDF report.
 
 ## Primary Workflow
 

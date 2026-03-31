@@ -61,7 +61,7 @@ This is the core research phase. **You MUST spawn parallel sub-agents** — one 
 1. Read ALL notes in the `notes/` directory.
 2. Read `brief.md` to re-anchor on the original question.
 3. Produce a complete `report.md` with:
-   - **YAML frontmatter**: title, subtitle, date (today), author ("Deep Research"), template.
+   - **YAML frontmatter**: title, subtitle, date (today), author ("Fabietti.xyz"), template.
    - **Executive Summary**: the single most important page — what did we find and why does it matter? Write this LAST but place it first.
    - **Context / Background**: set the scene.
    - **Deep Analysis sections**: multiple H2 sections, each covering a major aspect. Lead with insight, not description. Use data, examples, comparisons. Acknowledge uncertainty.

@@ -65,9 +65,9 @@ def scaffold(topic: str):
     today = date.today().isoformat()
     report = f"""---
 title: "{topic}"
-subtitle: "A Deep Research Report"
+subtitle: "A Research Report by Fabietti.xyz"
 date: "{today}"
-author: "Deep Research"
+author: "Fabietti.xyz"
 template: "default"
 ---
 

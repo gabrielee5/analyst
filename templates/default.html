@@ -10,17 +10,28 @@
 
     <!-- Cover Page -->
     <div class="cover">
+        <img class="logo" src="assets/logo.png" alt="Fabietti.xyz">
+        <div class="sys-label">Research Report</div>
         <div class="title">{{ title }}</div>
         {% if subtitle %}
         <div class="subtitle">{{ subtitle }}</div>
         {% endif %}
-        <hr class="rule">
-        {% if date %}
-        <div class="date">{{ date }}</div>
-        {% endif %}
-        {% if author %}
-        <div class="author">{{ author }}</div>
-        {% endif %}
+        <div class="meta-block">
+            {% if date %}
+            <div class="meta-item">
+                <span class="meta-label">Date</span>
+                <span class="meta-value">{{ date }}</span>
+            </div>
+            {% endif %}
+            <div class="meta-item">
+                <span class="meta-label">Prepared by</span>
+                <span class="meta-value">Fabietti.xyz</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Classification</span>
+                <span class="meta-value">Internal</span>
+            </div>
+        </div>
     </div>
 
     <!-- Table of Contents -->
@@ -36,6 +47,11 @@
     <!-- Report Content -->
     <div class="content">
         {{ content }}
+    </div>
+
+    <!-- Footer -->
+    <div class="page-footer">
+        Fabietti.xyz &mdash; Trasformiamo complessit&agrave; in sistemi che funzionano
     </div>
 
 </body>

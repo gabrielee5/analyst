@@ -55,7 +55,7 @@ def render_pdf(md_path: str, template_name: str = "default", output_path: str | 
     title = meta.get("title", md_file.stem.replace("-", " ").replace("_", " ").title())
     subtitle = meta.get("subtitle", "")
     date = meta.get("date", "")
-    author = meta.get("author", "Deep Research")
+    author = meta.get("author", "Fabietti.xyz")
     template_name = meta.get("template", template_name)
 
     content_html, toc_html = render_markdown(body)
