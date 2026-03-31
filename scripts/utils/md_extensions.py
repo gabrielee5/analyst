@@ -13,17 +13,7 @@ class CalloutPreprocessor(Preprocessor):
         re.MULTILINE,
     )
 
-    ICONS = {
-        "note": "&#x1F4DD;",
-        "tip": "&#x1F4A1;",
-        "warning": "&#x26A0;&#xFE0F;",
-        "danger": "&#x1F6A8;",
-        "insight": "&#x1F50D;",
-        "example": "&#x1F4CB;",
-        "thesis": "&#x1F4C8;",
-        "judgment": "&#x2696;&#xFE0F;",
-        "finding": "&#x1F3AF;",
-    }
+    ICONS = {}
 
     def run(self, lines):
         text = "\n".join(lines)
@@ -35,10 +25,9 @@ class CalloutPreprocessor(Preprocessor):
         admonition_type = match.group(1).lower()
         title = match.group(2) or admonition_type.title()
         body = "\n".join(line[4:] for line in match.group(3).split("\n") if line)
-        icon = self.ICONS.get(admonition_type, "")
         return (
             f'<div class="admonition {admonition_type}">\n'
-            f'<p class="admonition-title">{icon} {title}</p>\n'
+            f'<p class="admonition-title">{title}</p>\n'
             f"<p>{body}</p>\n"
             f"</div>\n"
         )
