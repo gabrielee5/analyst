@@ -4,20 +4,20 @@
    ============================================================ */
 
 :root {
-    --bg: #0a0a0a;
-    --bg-surface: #111111;
-    --bg-elevated: #1a1a1a;
-    --bg-subtle: #141414;
-    --text: #e0e0e0;
-    --text-muted: #8a8a8a;
-    --text-bright: #ffffff;
-    --accent: #c8c8c8;
-    --accent-dim: #6a6a6a;
-    --border: #2a2a2a;
-    --border-light: #222222;
-    --green: #4ade80;
-    --amber: #fbbf24;
-    --red: #f87171;
+    --bg: #ffffff;
+    --bg-surface: #f7f7f7;
+    --bg-elevated: #f0f0f0;
+    --bg-subtle: #fafafa;
+    --text: #2a2a2a;
+    --text-muted: #6a6a6a;
+    --text-bright: #0a0a0a;
+    --accent: #444444;
+    --accent-dim: #999999;
+    --border: #d8d8d8;
+    --border-light: #e8e8e8;
+    --green: #1a7a3a;
+    --amber: #a67c00;
+    --red: #c43030;
     --font-sans: "SF Mono", "Fira Code", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     --font-body: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
     --font-mono: "SF Mono", "Fira Code", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -85,10 +85,12 @@ body {
 .cover .logo {
     position: absolute;
     top: 35mm;
-    left: 35mm;
+    right: 35mm;
+    left: auto;
     width: 40pt;
     height: 40pt;
-    opacity: 0.7;
+    opacity: 0.15;
+    filter: invert(1);
 }
 
 .cover .sys-label {
