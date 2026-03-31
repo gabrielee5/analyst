@@ -1,5 +1,5 @@
 ---
-name: plan
+name: plan-research
 description: Generate a structured research plan from a brief. Use when starting research on a new topic, creating a research plan, or when the user has a brief.md and wants to figure out what to investigate.
 ---
 
