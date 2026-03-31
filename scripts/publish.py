@@ -66,6 +66,10 @@ def collect_reports(publish_all: bool = False) -> list[dict]:
         pdf_source = report_path.parent / "output" / f"{slug}.pdf"
         pdf_url = f"/pdfs/{slug}.pdf" if pdf_source.exists() else None
 
+        # Estimate reading time (~250 words per minute)
+        word_count = len(body.split())
+        reading_min = max(1, round(word_count / 250))
+
         reports.append({
             "slug": slug,
             "title": meta.get("title", slug.replace("-", " ").title()),
@@ -74,6 +78,9 @@ def collect_reports(publish_all: bool = False) -> list[dict]:
             "author": meta.get("author", "Fabietti.xyz"),
             "template": meta.get("template", "default"),
             "report_type": meta.get("report_type", "Research Report"),
+            "domain": meta.get("domain", ""),
+            "word_count": word_count,
+            "reading_min": reading_min,
             "body": body,
             "pdf_source": pdf_source if pdf_source.exists() else None,
             "pdf_url": pdf_url,
@@ -127,6 +134,8 @@ def build(publish_all: bool = False):
             date=report["date"],
             author=report["author"],
             report_type=report["report_type"],
+            domain=report["domain"],
+            reading_min=report["reading_min"],
             toc=toc_html,
             pdf_url=report["pdf_url"],
         )

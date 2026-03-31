@@ -1,46 +1,54 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <!-- Academic Header -->
-    <div class="report-header" style="text-align: center;">
-        <div class="title">{{ title }}</div>
-        <div class="meta-block" style="justify-content: center;">
-            <div class="meta-item" style="align-items: center;">
-                <span class="meta-label">Author</span>
-                <span class="meta-value">Fabietti.xyz</span>
+    <article>
+        <!-- Academic Header -->
+        <header class="report-header report-header--centered">
+            <h1 class="title">{{ title }}</h1>
+            <div class="meta-block meta-block--centered">
+                <div class="meta-item">
+                    <span class="meta-label">Author</span>
+                    <span class="meta-value">Fabietti.xyz</span>
+                </div>
+                {% if date %}
+                <div class="meta-item">
+                    <span class="meta-label">Date</span>
+                    <span class="meta-value">{{ date }}</span>
+                </div>
+                {% endif %}
+                {% if reading_min %}
+                <div class="meta-item">
+                    <span class="meta-label">Reading time</span>
+                    <span class="meta-value">{{ reading_min }} min</span>
+                </div>
+                {% endif %}
             </div>
-            {% if date %}
-            <div class="meta-item" style="align-items: center;">
-                <span class="meta-label">Date</span>
-                <span class="meta-value">{{ date }}</span>
-            </div>
+            {% if pdf_url %}
+            <a href="{{ pdf_url }}" class="pdf-download">&#x2913; Download PDF</a>
             {% endif %}
+        </header>
+
+        <!-- Abstract -->
+        {% if subtitle %}
+        <div class="abstract">
+            <h3>Abstract</h3>
+            <p>{{ subtitle }}</p>
         </div>
-        {% if pdf_url %}
-        <a href="{{ pdf_url }}" class="pdf-download" style="margin-top: 1rem;">&#x2913; Download PDF</a>
         {% endif %}
-    </div>
 
-    <!-- Abstract -->
-    {% if subtitle %}
-    <div class="abstract">
-        <h3>Abstract</h3>
-        <p>{{ subtitle }}</p>
-    </div>
-    {% endif %}
+        <!-- Table of Contents -->
+        {% if toc %}
+        <aside class="toc-section">
+            <div class="toc-label">Contents</div>
+            <div class="toc">
+                {{ toc }}
+            </div>
+        </aside>
+        {% endif %}
 
-    <!-- Table of Contents -->
-    {% if toc %}
-    <div class="toc-section">
-        <h2>Contents</h2>
-        <div class="toc">
-            {{ toc }}
+        <!-- Report Content -->
+        <div class="content academic-content">
+            {{ content }}
         </div>
-    </div>
-    {% endif %}
-
-    <!-- Report Content -->
-    <div class="content academic-content">
-        {{ content }}
-    </div>
+    </article>
 {% endblock %}

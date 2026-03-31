@@ -57,9 +57,10 @@ body {
 ## Colors
 
 ### Background
-- **Primary Background**: `#fff` (pure white)
-- **Secondary Background**: `#f9fafb` (gray-50) - for table headers, hover states
-- **Tertiary Background**: `#fafafa` - for chart containers
+- **Primary Background**: `#fff` (pure white) — dashboards, hover highlights
+- **Web Background**: `#fafafa` — research site body (reduces eye strain for long reads)
+- **Secondary Background**: `#f3f4f6` (gray-100) — table headers, code blocks
+- **Tertiary Background**: `#f9fafb` (gray-50) — chart containers
 
 ### Borders
 - **Default Border**: `#e5e7eb` (gray-200)
@@ -631,4 +632,62 @@ When building a dashboard with this design system:
 }
 ```
 
-This design system ensures all dashboards in your project maintain the same clean, brutalist, fabiett.xyz-inspired aesthetic.
+This design system ensures all dashboards in your project maintain the same clean, brutalist, fabietti.xyz-inspired aesthetic.
+
+---
+
+## Web Publishing — Research Archive Site
+
+The research archive at fabietti.xyz follows the same brutalist system with specific adaptations for long-form reading. Inspired by gwern.net, danluu.com, citriniresearch.com, and Tufte CSS.
+
+### Design Principles for the Web
+
+1. **Navigation disappears.** A single sticky bar with logo + 2-3 text links. No hamburger, no dropdowns, no logos competing with content.
+2. **The index is a scannable list.** Date-title pairs with optional domain badge and reading time. No cards, no thumbnails, no excerpts. The danluu pattern: `DATE  TITLE  META` in a flat list.
+3. **Content width is 720px.** Optimal for monospace at 14px — approximately 70-80 characters per line.
+4. **Line-height of 1.7 for article body text.** Standard 1.5 for UI chrome, but article `.content p` uses 1.7 for readability.
+5. **Off-white background (`#fafafa`).** Reduces eye strain on long reads compared to pure white. Pure white (`#fff`) reserved for hover highlights.
+6. **Links differentiate internal vs external.** External links in article content get a subtle arrow indicator (`::after` with `\2197`).
+7. **Blockquotes use 2px solid black left border**, no background. Cleaner than the filled style.
+8. **Admonitions use 2px colored left border**, no background fill. Color only on the border and title text.
+9. **Metadata labels use 0.625rem / uppercase / #9ca3af / letter-spacing 0.05em.** Smaller and lighter than the 0.75rem used in dashboards.
+10. **TOC is a labeled section**, not a heading. Uses a `.toc-label` div instead of `<h2>` to avoid polluting the heading hierarchy.
+
+### Index Page Pattern
+
+```
+[date]     [title]                                    [domain badge] [Xmin]
+2026-03-31 The Rise and Ruin of Bethlehem Steel                       17 min
+2026-03-28 NVIDIA's Datacenter Moat                   FINANCIAL       12 min
+```
+
+- Each row is a single `<a>` wrapping the whole line (full-row click target)
+- Domain badge: 0.625rem, uppercase, 0.85px border, no background
+- Reading time: 0.625rem, #9ca3af
+- Hover: background shifts to #fff, title gets underline
+
+### Report Page Hierarchy
+
+```
+[sys-label]         — 0.75rem, #9ca3af, uppercase
+[title]             — 2rem, weight 600, line-height 1.2
+[subtitle]          — 1rem, #6b7280, line-height 1.6
+[meta-block]        — flex row of label/value pairs
+[pdf-download]      — 0.75rem, uppercase, bordered button
+---
+[toc-label]         — 0.625rem, #9ca3af, uppercase
+[toc items]         — 0.875rem, bordered list
+---
+[article content]   — body text at line-height 1.7
+```
+
+### Footer Pattern
+
+Minimal two-column footer: brand name left, nav links right. Same #9ca3af color as other tertiary text. No tagline — keep it functional.
+
+### Responsive Behavior (Mobile)
+
+- Report rows stack vertically: date on top, title below, meta below that
+- Nav stacks: logo on top, links below
+- Title drops to 1.5rem
+- Meta block stacks to column

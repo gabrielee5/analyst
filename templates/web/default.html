@@ -1,42 +1,50 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <!-- Report Header -->
-    <div class="report-header">
-        <div class="sys-label">Research Report</div>
-        <div class="title">{{ title }}</div>
-        {% if subtitle %}
-        <div class="subtitle">{{ subtitle }}</div>
-        {% endif %}
-        <div class="meta-block">
-            {% if date %}
-            <div class="meta-item">
-                <span class="meta-label">Date</span>
-                <span class="meta-value">{{ date }}</span>
-            </div>
+    <article>
+        <!-- Report Header -->
+        <header class="report-header">
+            <div class="sys-label">Research Report</div>
+            <h1 class="title">{{ title }}</h1>
+            {% if subtitle %}
+            <p class="subtitle">{{ subtitle }}</p>
             {% endif %}
-            <div class="meta-item">
-                <span class="meta-label">Prepared by</span>
-                <span class="meta-value">Fabietti.xyz</span>
+            <div class="meta-block">
+                {% if date %}
+                <div class="meta-item">
+                    <span class="meta-label">Date</span>
+                    <span class="meta-value">{{ date }}</span>
+                </div>
+                {% endif %}
+                <div class="meta-item">
+                    <span class="meta-label">Prepared by</span>
+                    <span class="meta-value">Fabietti.xyz</span>
+                </div>
+                {% if reading_min %}
+                <div class="meta-item">
+                    <span class="meta-label">Reading time</span>
+                    <span class="meta-value">{{ reading_min }} min</span>
+                </div>
+                {% endif %}
             </div>
-        </div>
-        {% if pdf_url %}
-        <a href="{{ pdf_url }}" class="pdf-download">&#x2913; Download PDF</a>
+            {% if pdf_url %}
+            <a href="{{ pdf_url }}" class="pdf-download">&#x2913; Download PDF</a>
+            {% endif %}
+        </header>
+
+        <!-- Table of Contents -->
+        {% if toc %}
+        <aside class="toc-section">
+            <div class="toc-label">Contents</div>
+            <div class="toc">
+                {{ toc }}
+            </div>
+        </aside>
         {% endif %}
-    </div>
 
-    <!-- Table of Contents -->
-    {% if toc %}
-    <div class="toc-section">
-        <h2>Contents</h2>
-        <div class="toc">
-            {{ toc }}
+        <!-- Report Content -->
+        <div class="content">
+            {{ content }}
         </div>
-    </div>
-    {% endif %}
-
-    <!-- Report Content -->
-    <div class="content">
-        {{ content }}
-    </div>
+    </article>
 {% endblock %}

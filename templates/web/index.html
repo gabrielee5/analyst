@@ -3,29 +3,19 @@
 {% block content %}
     <div class="archive-header">
         <h1>Research Archive</h1>
-        <p>Expert-grade research reports across finance, technology, geopolitics, and more.</p>
+        <p>Independent research across finance, technology, geopolitics, and history.</p>
     </div>
 
-    <ul class="report-list">
+    <div class="report-list">
         {% for report in reports %}
-        <li class="report-card">
-            <div class="card-meta">
-                {% if report.date %}<span>{{ report.date }}</span>{% endif %}
-                {% if report.template %}<span>{{ report.template }}</span>{% endif %}
-            </div>
-            <div class="card-title">
-                <a href="/reports/{{ report.slug }}/">{{ report.title }}</a>
-            </div>
-            {% if report.subtitle %}
-            <div class="card-subtitle">{{ report.subtitle }}</div>
-            {% endif %}
-            <div class="card-links">
-                <a href="/reports/{{ report.slug }}/">Read &rarr;</a>
-                {% if report.pdf_url %}
-                <a href="{{ report.pdf_url }}">&#x2913; PDF</a>
-                {% endif %}
-            </div>
-        </li>
+        <a href="/reports/{{ report.slug }}/" class="report-row">
+            <span class="row-date">{{ report.date }}</span>
+            <span class="row-title">{{ report.title }}</span>
+            <span class="row-meta">
+                {% if report.domain %}<span class="row-domain">{{ report.domain }}</span>{% endif %}
+                <span class="row-reading">{{ report.reading_min }} min</span>
+            </span>
+        </a>
         {% endfor %}
-    </ul>
+    </div>
 {% endblock %}

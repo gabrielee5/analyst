@@ -1,6 +1,9 @@
 /* ============================================================
    Fabietti.xyz — Web Research Archive Stylesheet
    Follows DESIGN.md: brutalist, monospace, 0.85px borders, no radius.
+
+   Inspired by: gwern.net (sidenotes, metadata), danluu.com (bare lists),
+   citriniresearch.com (editorial spacing), tufte-css (reading comfort).
    ============================================================ */
 
 /* === Reset === */
@@ -20,7 +23,7 @@ html {
 
 body {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-    background: #fff;
+    background: #fafafa;
     color: #000;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
@@ -28,7 +31,7 @@ body {
 
 /* === Universal Transitions === */
 
-button, a, input, select, textarea, .report-card, .pdf-download {
+button, a, input, select, textarea, .report-row, .pdf-download {
     transition: all 0.15s;
 }
 
@@ -63,11 +66,16 @@ button, a, input, select, textarea, .report-card, .pdf-download {
 
 .site-nav {
     border-bottom: 0.85px solid #e5e7eb;
-    padding: 0.9375rem 0;
-    margin-bottom: 2.5rem;
+    padding: 0.9375rem 1.25rem;
+    position: sticky;
+    top: 0;
+    background: #fafafa;
+    z-index: 100;
 }
 
-.site-nav .container {
+.nav-inner {
+    max-width: 720px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -85,13 +93,12 @@ button, a, input, select, textarea, .report-card, .pdf-download {
     color: #000;
 }
 
-.site-nav .nav-links {
+.nav-links {
     display: flex;
     gap: 1.25rem;
-    list-style: none;
 }
 
-.site-nav .nav-links a {
+.nav-links a {
     font-size: 0.75rem;
     color: #6b7280;
     text-decoration: none;
@@ -99,16 +106,149 @@ button, a, input, select, textarea, .report-card, .pdf-download {
     letter-spacing: 0.025em;
 }
 
-.site-nav .nav-links a:hover {
+.nav-links a:hover {
     color: #000;
 }
 
-/* === Report Header === */
+/* === Site Footer === */
+
+.site-footer {
+    font-size: 0.75rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    margin-top: 2.5rem;
+    padding: 1.25rem;
+    border-top: 0.85px solid #e5e7eb;
+}
+
+.footer-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-left {
+    color: #9ca3af;
+}
+
+.footer-right {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.footer-right a {
+    color: #9ca3af;
+    text-decoration: none;
+}
+
+.footer-right a:hover {
+    color: #000;
+}
+
+/* ============================================================
+   INDEX / ARCHIVE PAGE
+   Danluu-inspired scannable list: date — title — meta
+   ============================================================ */
+
+.archive-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 0.85px solid #e5e7eb;
+}
+
+.archive-header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #000;
+    line-height: 2rem;
+    margin-bottom: 0.375rem;
+}
+
+.archive-header p {
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.report-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.report-row {
+    display: flex;
+    align-items: baseline;
+    gap: 1.25rem;
+    padding: 0.75rem 0;
+    border-bottom: 0.85px solid #e5e7eb;
+    text-decoration: none;
+    color: #000;
+}
+
+.report-row:hover {
+    background: #fff;
+}
+
+.report-row:first-child {
+    border-top: 0.85px solid #e5e7eb;
+}
+
+.row-date {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    white-space: nowrap;
+    min-width: 5.5rem;
+    letter-spacing: 0.025em;
+}
+
+.row-title {
+    font-size: 0.875rem;
+    font-weight: 500;
+    flex: 1;
+    color: #000;
+}
+
+.report-row:hover .row-title {
+    text-decoration: underline;
+    text-decoration-color: #d1d5db;
+    text-underline-offset: 2px;
+}
+
+.row-meta {
+    display: flex;
+    gap: 0.625rem;
+    align-items: baseline;
+    white-space: nowrap;
+}
+
+.row-domain {
+    font-size: 0.625rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 0.85px solid #e5e7eb;
+    padding: 0.0625rem 0.375rem;
+}
+
+.row-reading {
+    font-size: 0.625rem;
+    color: #9ca3af;
+}
+
+/* ============================================================
+   REPORT PAGES — HEADER
+   ============================================================ */
 
 .report-header {
     margin-bottom: 2.5rem;
     padding-bottom: 1.25rem;
     border-bottom: 0.85px solid #e5e7eb;
+}
+
+.report-header--centered {
+    text-align: center;
 }
 
 .report-header .report-type-label {
@@ -120,26 +260,30 @@ button, a, input, select, textarea, .report-card, .pdf-download {
     margin-bottom: 0.375rem;
 }
 
+.report-header .report-type-label--amber {
+    color: #854d0e;
+}
+
 .report-header .sys-label {
     font-size: 0.75rem;
-    color: #6b7280;
+    color: #9ca3af;
     text-transform: uppercase;
     letter-spacing: 0.025em;
     margin-bottom: 0.625rem;
 }
 
 .report-header .title {
-    font-size: 2.25rem;
+    font-size: 2rem;
     font-weight: 600;
     color: #000;
-    line-height: 2.5rem;
+    line-height: 1.2;
     margin-bottom: 0.625rem;
 }
 
 .report-header .subtitle {
     font-size: 1rem;
     color: #6b7280;
-    line-height: 1.5;
+    line-height: 1.6;
     margin-bottom: 1.25rem;
 }
 
@@ -149,16 +293,20 @@ button, a, input, select, textarea, .report-card, .pdf-download {
     flex-wrap: wrap;
 }
 
+.report-header .meta-block--centered {
+    justify-content: center;
+}
+
 .report-header .meta-item {
     display: flex;
     flex-direction: column;
 }
 
 .report-header .meta-label {
-    font-size: 0.75rem;
-    color: #6b7280;
+    font-size: 0.625rem;
+    color: #9ca3af;
     text-transform: uppercase;
-    letter-spacing: 0.025em;
+    letter-spacing: 0.05em;
     margin-bottom: 0.125rem;
 }
 
@@ -167,27 +315,31 @@ button, a, input, select, textarea, .report-card, .pdf-download {
     color: #000;
 }
 
-/* PDF download button — secondary button style from DESIGN.md */
+/* PDF download — secondary button */
 .pdf-download {
     display: inline-flex;
     align-items: center;
     gap: 0.375rem;
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     color: #000;
     text-decoration: none;
     border: 0.85px solid #e5e7eb;
-    padding: 0.625rem 1.25rem;
+    padding: 0.5rem 1rem;
     margin-top: 1.25rem;
     font-family: inherit;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
 }
 
 .pdf-download:hover {
     color: #000;
     border-color: #9ca3af;
-    background: #f9fafb;
+    background: #fff;
 }
 
-/* === Table of Contents === */
+/* ============================================================
+   TABLE OF CONTENTS
+   ============================================================ */
 
 .toc-section {
     margin-bottom: 1.875rem;
@@ -195,20 +347,13 @@ button, a, input, select, textarea, .report-card, .pdf-download {
     border-bottom: 0.85px solid #e5e7eb;
 }
 
-.toc-section h2 {
-    font-size: 0.75rem;
-    color: #6b7280;
+.toc-label {
+    font-size: 0.625rem;
+    color: #9ca3af;
     text-transform: uppercase;
-    letter-spacing: 0.025em;
-    border-bottom: none;
+    letter-spacing: 0.05em;
     padding-bottom: 0.625rem;
-    margin-top: 0;
-    margin-bottom: 0.9375rem;
     font-weight: 500;
-}
-
-.toc-section h2::before {
-    content: none;
 }
 
 .toc ul {
@@ -221,9 +366,13 @@ button, a, input, select, textarea, .report-card, .pdf-download {
 }
 
 .toc > ul > li {
-    margin-bottom: 0.125rem;
+    margin-bottom: 0.0625rem;
     padding: 0.375rem 0;
     border-bottom: 0.85px solid #e5e7eb;
+}
+
+.toc > ul > li:last-child {
+    border-bottom: none;
 }
 
 .toc > ul > li > a {
@@ -231,6 +380,12 @@ button, a, input, select, textarea, .report-card, .pdf-download {
     font-weight: 500;
     color: #000;
     text-decoration: none;
+}
+
+.toc > ul > li > a:hover {
+    text-decoration: underline;
+    text-decoration-color: #d1d5db;
+    text-underline-offset: 2px;
 }
 
 .toc > ul > li > ul > li > a {
@@ -243,9 +398,14 @@ button, a, input, select, textarea, .report-card, .pdf-download {
     margin-top: 0.125rem;
 }
 
-.toc a:hover {
+.toc > ul > li > ul > li > a:hover {
     color: #000;
 }
+
+/* ============================================================
+   ARTICLE CONTENT — TYPOGRAPHY
+   Optimized for long-form reading: 1.7 line-height, generous spacing
+   ============================================================ */
 
 /* === Headings === */
 
@@ -278,7 +438,7 @@ h2 {
 
 h2::before {
     content: "// ";
-    color: #6b7280;
+    color: #9ca3af;
     font-weight: 400;
     font-size: 1rem;
 }
@@ -303,7 +463,7 @@ h4 {
 
 /* Permalink anchors */
 .headerlink {
-    color: #9ca3af;
+    color: #d1d5db;
     text-decoration: none;
     margin-left: 0.375rem;
     opacity: 0;
@@ -316,7 +476,19 @@ h3:hover .headerlink {
     opacity: 1;
 }
 
+.headerlink:hover {
+    color: #9ca3af;
+}
+
 /* === Paragraphs & Inline === */
+
+.content p {
+    margin: 0 0 0.9375rem 0;
+    line-height: 1.7;
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+}
 
 p {
     margin: 0 0 0.625rem 0;
@@ -331,6 +503,7 @@ em {
     font-style: italic;
 }
 
+/* Links — differentiate internal vs external */
 a {
     color: #000;
     text-decoration: underline;
@@ -342,15 +515,27 @@ a:hover {
     text-decoration-color: #000;
 }
 
+/* External links get a subtle indicator */
+.content a[href^="http"]:not([href*="fabietti.xyz"])::after {
+    content: "\2009\2197";
+    font-size: 0.625rem;
+    color: #9ca3af;
+    vertical-align: super;
+}
+
 /* === Blockquotes === */
 
 blockquote {
     margin: 1.25rem 0;
     padding: 0.9375rem 1.25rem;
-    border-left: 0.85px solid #9ca3af;
-    background: #f9fafb;
+    border-left: 2px solid #000;
+    background: transparent;
     color: #6b7280;
     font-style: italic;
+    line-height: 1.7;
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
 }
 
 blockquote p {
@@ -371,29 +556,30 @@ table {
 }
 
 thead {
-    background: #f9fafb;
+    background: #f3f4f6;
     border-bottom: 0.85px solid #e5e7eb;
 }
 
 th {
     font-weight: 500;
-    font-size: 0.75rem;
+    font-size: 0.625rem;
     text-transform: uppercase;
-    letter-spacing: 0.025em;
+    letter-spacing: 0.05em;
     text-align: left;
-    padding: 0.9375rem 1.25rem;
+    padding: 0.75rem 1rem;
     color: #6b7280;
 }
 
 td {
-    padding: 1.25rem;
+    padding: 0.9375rem 1rem;
     border-bottom: 0.85px solid #e5e7eb;
     vertical-align: top;
     color: #000;
+    line-height: 1.6;
 }
 
 tbody tr:hover {
-    background: #f9fafb;
+    background: #fff;
 }
 
 tbody tr:last-child td {
@@ -411,14 +597,14 @@ tbody tr:last-child td {
 code {
     font-family: inherit;
     font-size: 0.875rem;
-    background: #f9fafb;
+    background: #f3f4f6;
     border: 0.85px solid #e5e7eb;
     padding: 0.125rem 0.375rem;
     color: #166534;
 }
 
 pre {
-    background: #f9fafb;
+    background: #f3f4f6;
     color: #000;
     padding: 1.25rem;
     border: 0.85px solid #e5e7eb;
@@ -437,7 +623,7 @@ pre code {
 }
 
 .highlight {
-    background: #f9fafb;
+    background: #f3f4f6;
     color: #000;
     padding: 1.25rem;
     border: 0.85px solid #e5e7eb;
@@ -455,6 +641,15 @@ pre code {
 
 /* === Lists === */
 
+.content ul, .content ol {
+    margin: 0.625rem 0 1.25rem 0;
+    padding-left: 1.25rem;
+    line-height: 1.7;
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+}
+
 ul, ol {
     margin: 0.625rem 0 0.9375rem 0;
     padding-left: 1.25rem;
@@ -470,7 +665,7 @@ li > ul, li > ol {
 }
 
 li::marker {
-    color: #6b7280;
+    color: #9ca3af;
 }
 
 /* === Horizontal Rules === */
@@ -479,7 +674,7 @@ hr {
     border: none;
     height: 0.85px;
     background: #e5e7eb;
-    margin: 1.875rem 0;
+    margin: 2.5rem 0;
 }
 
 /* === Footnotes === */
@@ -510,25 +705,27 @@ hr {
 
 .footnote-backref {
     text-decoration: none;
-    color: #6b7280;
+    color: #9ca3af;
 }
 
-/* === Admonitions / Callouts === */
+/* ============================================================
+   ADMONITIONS / CALLOUTS
+   ============================================================ */
 
 .admonition {
     margin: 1.25rem 0;
     padding: 1.25rem;
-    border-left: 0.85px solid #9ca3af;
-    background: #f9fafb;
+    border-left: 2px solid #9ca3af;
+    background: transparent;
 }
 
 .admonition-title {
     font-weight: 500;
-    font-size: 0.75rem;
+    font-size: 0.625rem;
     color: #6b7280;
     margin: 0 0 0.375rem 0;
     text-transform: uppercase;
-    letter-spacing: 0.025em;
+    letter-spacing: 0.05em;
 }
 
 .admonition p:last-child {
@@ -537,7 +734,6 @@ hr {
 
 .admonition.warning {
     border-left-color: #eab308;
-    background: #fefce8;
 }
 
 .admonition.warning .admonition-title {
@@ -546,7 +742,6 @@ hr {
 
 .admonition.danger {
     border-left-color: #ef4444;
-    background: #fef2f2;
 }
 
 .admonition.danger .admonition-title {
@@ -555,7 +750,6 @@ hr {
 
 .admonition.tip, .admonition.insight {
     border-left-color: #22c55e;
-    background: #f0fdf4;
 }
 
 .admonition.tip .admonition-title,
@@ -573,7 +767,6 @@ hr {
 
 .admonition.thesis {
     border-left-color: #000;
-    background: #f9fafb;
 }
 
 .admonition.thesis .admonition-title {
@@ -582,7 +775,6 @@ hr {
 
 .admonition.judgment {
     border-left-color: #eab308;
-    background: #fefce8;
 }
 
 .admonition.judgment .admonition-title {
@@ -591,14 +783,15 @@ hr {
 
 .admonition.finding {
     border-left-color: #22c55e;
-    background: #f0fdf4;
 }
 
 .admonition.finding .admonition-title {
     color: #166534;
 }
 
-/* === Images / Figures === */
+/* ============================================================
+   IMAGES / FIGURES
+   ============================================================ */
 
 img {
     max-width: 100%;
@@ -615,118 +808,15 @@ figure {
 figcaption {
     font-size: 0.75rem;
     font-style: normal;
-    color: #6b7280;
+    color: #9ca3af;
     margin-top: 0.375rem;
     text-align: center;
     letter-spacing: 0.025em;
 }
 
-/* === Site Footer === */
-
-.site-footer {
-    font-size: 0.75rem;
-    color: #6b7280;
-    text-transform: uppercase;
-    letter-spacing: 0.025em;
-    text-align: center;
-    margin-top: 2.5rem;
-    padding: 1.25rem 0;
-    border-top: 0.85px solid #e5e7eb;
-}
-
-.site-footer a {
-    color: #6b7280;
-    text-decoration: none;
-}
-
-.site-footer a:hover {
-    color: #000;
-}
-
-/* === Index / Archive Page === */
-
-.archive-header {
-    margin-bottom: 2.5rem;
-}
-
-.archive-header h1 {
-    font-size: 2.25rem;
-    font-weight: 600;
-    color: #000;
-    line-height: 2.5rem;
-    margin-bottom: 0.625rem;
-}
-
-.archive-header p {
-    color: #6b7280;
-    font-size: 1rem;
-}
-
-.report-list {
-    list-style: none;
-}
-
-.report-card {
-    padding: 1.25rem 0;
-    border-bottom: 0.85px solid #e5e7eb;
-}
-
-.report-card:first-child {
-    padding-top: 0;
-}
-
-.report-card .card-meta {
-    font-size: 0.75rem;
-    color: #9ca3af;
-    text-transform: uppercase;
-    letter-spacing: 0.025em;
-    margin-bottom: 0.375rem;
-    display: flex;
-    gap: 0.9375rem;
-}
-
-.report-card .card-title {
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: 0.375rem;
-}
-
-.report-card .card-title a {
-    color: #000;
-    text-decoration: none;
-}
-
-.report-card .card-title a:hover {
-    text-decoration: underline;
-    text-decoration-color: #d1d5db;
-    text-underline-offset: 2px;
-}
-
-.report-card .card-subtitle {
-    color: #6b7280;
-    font-size: 0.875rem;
-    line-height: 1.5;
-}
-
-.report-card .card-links {
-    margin-top: 0.625rem;
-    display: flex;
-    gap: 0.9375rem;
-}
-
-.report-card .card-links a {
-    font-size: 0.75rem;
-    color: #6b7280;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.025em;
-}
-
-.report-card .card-links a:hover {
-    color: #000;
-}
-
-/* === Template-Specific Overrides === */
+/* ============================================================
+   TEMPLATE-SPECIFIC OVERRIDES
+   ============================================================ */
 
 /* Academic */
 .academic-content {
@@ -742,7 +832,7 @@ figcaption {
 .academic-content h2::before {
     content: counter(section) ". ";
     font-weight: 600;
-    color: #6b7280;
+    color: #9ca3af;
 }
 
 .academic-content h3 {
@@ -756,11 +846,11 @@ figcaption {
 }
 
 .abstract h3 {
-    font-size: 0.75rem;
+    font-size: 0.625rem;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.025em;
-    color: #6b7280;
+    letter-spacing: 0.05em;
+    color: #9ca3af;
     margin: 0 0 0.375rem 0;
 }
 
@@ -768,6 +858,7 @@ figcaption {
     font-size: 0.875rem;
     color: #6b7280;
     margin: 0;
+    line-height: 1.7;
 }
 
 /* Financial */
@@ -781,7 +872,7 @@ figcaption {
 }
 
 .financial-content th {
-    font-size: 0.75rem;
+    font-size: 0.625rem;
     padding: 0.625rem 0.9375rem;
 }
 
@@ -815,22 +906,22 @@ figcaption {
 }
 
 .briefing-content p {
-    margin: 0 0 0.625rem 0;
+    margin: 0 0 0.9375rem 0;
 }
 
 .key-judgments {
     margin: 0 0 1.25rem 0;
     padding: 1.25rem;
-    background: #f9fafb;
+    background: transparent;
     border: 0.85px solid #e5e7eb;
-    border-top: 0.85px solid #000;
+    border-top: 2px solid #000;
 }
 
 .key-judgments h3 {
-    font-size: 0.75rem;
+    font-size: 0.625rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.025em;
+    letter-spacing: 0.05em;
     color: #000;
     margin: 0 0 0.625rem 0;
 }
@@ -843,23 +934,23 @@ figcaption {
 .key-judgments li {
     font-size: 0.875rem;
     margin-bottom: 0.375rem;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 .key-findings {
     margin: 0 0 1.25rem 0;
     padding: 1.25rem;
-    background: #f9fafb;
+    background: transparent;
     border: 0.85px solid #e5e7eb;
-    border-left: 0.85px solid #000;
+    border-left: 2px solid #000;
 }
 
 .key-findings h3 {
-    font-size: 0.75rem;
+    font-size: 0.625rem;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.025em;
-    color: #6b7280;
+    letter-spacing: 0.05em;
+    color: #9ca3af;
     margin: 0 0 0.625rem 0;
 }
 
@@ -871,47 +962,44 @@ figcaption {
 .key-findings li {
     font-size: 0.875rem;
     margin-bottom: 0.375rem;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
-/* Confidence badges (briefing) — badge style from DESIGN.md */
+/* Confidence badges (briefing) */
 .confidence-high,
 .confidence-moderate,
 .confidence-low {
     display: inline-block;
-    font-size: 0.75rem;
+    font-size: 0.625rem;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.025em;
-    padding: 0.125rem 0.625rem;
+    letter-spacing: 0.05em;
+    padding: 0.0625rem 0.375rem;
     vertical-align: middle;
     margin-left: 0.375rem;
     border: 0.85px solid;
 }
 
 .confidence-high {
-    background: #f0fdf4;
     color: #166534;
-    border-color: #bbf7d0;
+    border-color: #166534;
 }
 
 .confidence-moderate {
-    background: #fefce8;
     color: #854d0e;
-    border-color: #fef08a;
+    border-color: #854d0e;
 }
 
 .confidence-low {
-    background: #fef2f2;
     color: #991b1b;
-    border-color: #fecaca;
+    border-color: #991b1b;
 }
 
 .classification-mark {
-    font-size: 0.75rem;
+    font-size: 0.625rem;
     color: #9ca3af;
     text-transform: uppercase;
-    letter-spacing: 0.025em;
+    letter-spacing: 0.05em;
     margin-top: 0.9375rem;
 }
 
@@ -926,7 +1014,9 @@ figcaption {
     line-height: 1.5;
 }
 
-/* === Responsive === */
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
 
 @media (max-width: 640px) {
     .container {
@@ -935,12 +1025,12 @@ figcaption {
 
     .report-header .title {
         font-size: 1.5rem;
-        line-height: 2rem;
+        line-height: 1.2;
     }
 
     .archive-header h1 {
-        font-size: 1.5rem;
-        line-height: 2rem;
+        font-size: 1.25rem;
+        line-height: 1.6;
     }
 
     .report-header .meta-block {
@@ -948,7 +1038,7 @@ figcaption {
         gap: 0.625rem;
     }
 
-    .site-nav .container {
+    .nav-inner {
         flex-direction: column;
         gap: 0.625rem;
         align-items: flex-start;
@@ -966,8 +1056,17 @@ figcaption {
         padding: 0.9375rem 0.625rem;
     }
 
-    .report-card .card-meta {
+    /* Stack report rows on mobile */
+    .report-row {
         flex-direction: column;
-        gap: 0.125rem;
+        gap: 0.25rem;
+    }
+
+    .row-date {
+        min-width: auto;
+    }
+
+    .row-meta {
+        gap: 0.375rem;
     }
 }
