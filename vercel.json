@@ -1,0 +1,5 @@
+{
+  "buildCommand": "pip install markdown Jinja2 Pygments pyyaml python-dotenv && python scripts/publish.py build",
+  "outputDirectory": "_site",
+  "framework": null
+}
