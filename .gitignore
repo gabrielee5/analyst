@@ -1,16 +1,26 @@
+# Python
 __pycache__/
 *.pyc
 *.pyo
-.venv/
 *.egg-info/
 dist/
 build/
+.venv/
+
+# Research outputs (PDFs)
 **/output/*.pdf
-research/
+
+# Research projects (except the example)
+research/*
+!research/_example/
+
+# Secrets
+.env
+
+# OS / IDE
 .DS_Store
 .idea/
 .vscode/
 *.swp
 *.swo
 *~
-.env
