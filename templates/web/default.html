@@ -4,29 +4,14 @@
     <article>
         <!-- Report Header -->
         <header class="report-header">
-            <div class="sys-label">Research Report</div>
+            <div class="header-top-row">
+                <div class="sys-label">Research Report</div>
+                {% if date %}<div class="header-date">{{ date }}</div>{% endif %}
+            </div>
             <h1 class="title">{{ title }}</h1>
             {% if subtitle %}
             <p class="subtitle">{{ subtitle }}</p>
             {% endif %}
-            <div class="meta-block">
-                {% if date %}
-                <div class="meta-item">
-                    <span class="meta-label">Date</span>
-                    <span class="meta-value">{{ date }}</span>
-                </div>
-                {% endif %}
-                <div class="meta-item">
-                    <span class="meta-label">Prepared by</span>
-                    <span class="meta-value">Fabietti.xyz</span>
-                </div>
-                {% if reading_min %}
-                <div class="meta-item">
-                    <span class="meta-label">Reading time</span>
-                    <span class="meta-value">{{ reading_min }} min</span>
-                </div>
-                {% endif %}
-            </div>
             {% if pdf_url %}
             <a href="{{ pdf_url }}" class="pdf-download">&#x2913; Download PDF</a>
             {% endif %}

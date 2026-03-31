@@ -4,25 +4,11 @@
     <article>
         <!-- Academic Header -->
         <header class="report-header report-header--centered">
-            <h1 class="title">{{ title }}</h1>
-            <div class="meta-block meta-block--centered">
-                <div class="meta-item">
-                    <span class="meta-label">Author</span>
-                    <span class="meta-value">Fabietti.xyz</span>
-                </div>
-                {% if date %}
-                <div class="meta-item">
-                    <span class="meta-label">Date</span>
-                    <span class="meta-value">{{ date }}</span>
-                </div>
-                {% endif %}
-                {% if reading_min %}
-                <div class="meta-item">
-                    <span class="meta-label">Reading time</span>
-                    <span class="meta-value">{{ reading_min }} min</span>
-                </div>
-                {% endif %}
+            <div class="header-top-row">
+                <div class="sys-label">Academic Paper</div>
+                {% if date %}<div class="header-date">{{ date }}</div>{% endif %}
             </div>
+            <h1 class="title">{{ title }}</h1>
             {% if pdf_url %}
             <a href="{{ pdf_url }}" class="pdf-download">&#x2913; Download PDF</a>
             {% endif %}

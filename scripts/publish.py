@@ -163,8 +163,8 @@ def build(publish_all: bool = False):
     print(f"\nSite built: {SITE_DIR}/ ({len(reports)} report{'s' if len(reports) != 1 else ''})")
 
 
-def serve(port: int = 8000):
-    """Build the site and serve it locally."""
+def serve(port: int = 8000, watch: bool = False):
+    """Build the site and serve it locally. Optionally watch for changes."""
     build(publish_all=True)
 
     if not SITE_DIR.exists():
@@ -172,13 +172,53 @@ def serve(port: int = 8000):
         sys.exit(1)
 
     import os
+    import threading
     os.chdir(SITE_DIR)
-    handler = http.server.SimpleHTTPRequestHandler
-    with http.server.HTTPServer(("", port), handler) as httpd:
+
+    if watch:
+        from watchdog.observers import Observer
+        from watchdog.events import FileSystemEventHandler
+
+        class RebuildHandler(FileSystemEventHandler):
+            def __init__(self):
+                self._timer = None
+                self._lock = threading.Lock()
+
+            def _rebuild(self):
+                cwd = os.getcwd()
+                try:
+                    print("\n  Rebuilding...")
+                    build(publish_all=True)
+                    print(f"  Done. Serving at http://localhost:{port}")
+                finally:
+                    os.chdir(cwd)
+
+            def on_any_event(self, event):
+                if event.src_path and "_site" in event.src_path:
+                    return
+                with self._lock:
+                    if self._timer:
+                        self._timer.cancel()
+                    self._timer = threading.Timer(0.5, self._rebuild)
+                    self._timer.start()
+
+        observer = Observer()
+        handler = RebuildHandler()
+        watch_dirs = [str(RESEARCH_DIR), str(WEB_TEMPLATES_DIR)]
+        for d in watch_dirs:
+            observer.schedule(handler, d, recursive=True)
+        observer.start()
+        print(f"  Watching: research/, templates/web/")
+
+    http_handler = http.server.SimpleHTTPRequestHandler
+    with http.server.HTTPServer(("", port), http_handler) as httpd:
         print(f"\nServing at http://localhost:{port}  (Ctrl+C to stop)")
         try:
             httpd.serve_forever()
         except KeyboardInterrupt:
+            if watch:
+                observer.stop()
+                observer.join()
             print("\nStopped.")
 
 
@@ -191,13 +231,14 @@ def main():
 
     serve_parser = sub.add_parser("serve", help="Build and serve locally")
     serve_parser.add_argument("--port", type=int, default=8000, help="Port to serve on (default: 8000)")
+    serve_parser.add_argument("--watch", action="store_true", help="Auto-rebuild on file changes")
 
     args = parser.parse_args()
 
     if args.command == "build":
         build(publish_all=args.all)
     elif args.command == "serve":
-        serve(port=args.port)
+        serve(port=args.port, watch=args.watch)
 
 
 if __name__ == "__main__":

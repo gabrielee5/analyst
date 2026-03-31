@@ -10,6 +10,7 @@ dependencies = [
     "Pygments>=2.18",
     "pyyaml>=6.0",
     "python-dotenv>=1.0",
+    "watchdog>=6.0.0",
 ]
 
 [dependency-groups]
