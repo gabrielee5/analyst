@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <style>
+        /* Briefing template overrides — intelligence/policy style */
+        @page {
+            size: A4;
+            margin: 20mm 20mm 22mm 20mm;
+            background: var(--bg);
+
+            @top-center {
+                content: "OPEN SOURCE — UNCLASSIFIED";
+                font-family: var(--font-sans);
+                font-size: 6pt;
+                color: var(--accent-dim);
+                letter-spacing: 2px;
+            }
+
+            @bottom-center {
+                content: counter(page);
+                font-family: var(--font-sans);
+                font-size: 8pt;
+                color: var(--text-muted);
+            }
+        }
+
+        @page :first {
+            @top-center { content: none; }
+            @bottom-center { content: none; }
+        }
+
+        body {
+            font-size: 10pt;
+            line-height: 1.6;
+        }
+
+        /* Cover page */
+        .cover {
+            padding: 35mm 30mm 40mm 30mm;
+        }
+
+        .cover .report-type-label {
+            font-family: var(--font-sans);
+            font-size: 7pt;
+            color: var(--amber);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 500;
+            margin-bottom: 6pt;
+        }
+
+        .cover .title {
+            font-size: 26pt;
+        }
+
+        .cover .classification-mark {
+            font-family: var(--font-sans);
+            font-size: 7pt;
+            color: var(--accent-dim);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 20pt;
+        }
+
+        /* Key Judgments box */
+        .key-judgments {
+            margin: 0 0 24pt 0;
+            padding: 18pt 20pt;
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-top: 3px solid var(--text-bright);
+            page-break-inside: avoid;
+        }
+
+        .key-judgments h3 {
+            font-family: var(--font-sans);
+            font-size: 7pt;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-bright);
+            margin: 0 0 12pt 0;
+        }
+
+        .key-judgments ul {
+            margin: 0;
+            padding-left: 16pt;
+        }
+
+        .key-judgments li {
+            font-size: 9.5pt;
+            margin-bottom: 8pt;
+            line-height: 1.5;
+        }
+
+        /* Confidence badges */
+        .confidence-high,
+        .confidence-moderate,
+        .confidence-low {
+            display: inline-block;
+            font-family: var(--font-sans);
+            font-size: 6pt;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 1pt 6pt;
+            border-radius: 2px;
+            vertical-align: middle;
+            margin-left: 4pt;
+        }
+
+        .confidence-high {
+            background: #e8f5e9;
+            color: var(--green);
+            border: 1px solid #c8e6c9;
+        }
+
+        .confidence-moderate {
+            background: #fff8e1;
+            color: var(--amber);
+            border: 1px solid #ffecb3;
+        }
+
+        .confidence-low {
+            background: #ffebee;
+            color: var(--red);
+            border: 1px solid #ffcdd2;
+        }
+
+        /* Briefing content */
+        .briefing-content h2 {
+            font-size: 13pt;
+            font-weight: 700;
+            margin-top: 26pt;
+        }
+
+        .briefing-content h2::before {
+            content: none;
+        }
+
+        .briefing-content h3 {
+            font-size: 11pt;
+        }
+
+        /* Judgment admonition */
+        .admonition.judgment {
+            border-left-color: var(--amber);
+            background: #fffdf5;
+        }
+
+        .admonition.judgment .admonition-title {
+            color: var(--amber);
+        }
+
+        /* Compact paragraphs for scan-friendly layout */
+        .briefing-content p {
+            margin: 0 0 8pt 0;
+        }
+
+        /* Source assessment note */
+        .source-note {
+            font-family: var(--font-sans);
+            font-size: 7pt;
+            color: var(--accent-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 30pt;
+            padding-top: 12pt;
+            border-top: 1px solid var(--border);
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cover Page -->
+    <div class="cover">
+        <img class="logo" src="assets/logo.png" alt="Fabietti.xyz">
+        <div class="report-type-label">{{ report_type }}</div>
+        <div class="sys-label">Fabietti.xyz Intelligence</div>
+        <div class="title">{{ title }}</div>
+        {% if subtitle %}
+        <div class="subtitle">{{ subtitle }}</div>
+        {% endif %}
+        <div class="meta-block">
+            {% if date %}
+            <div class="meta-item">
+                <span class="meta-label">Date</span>
+                <span class="meta-value">{{ date }}</span>
+            </div>
+            {% endif %}
+            <div class="meta-item">
+                <span class="meta-label">Prepared by</span>
+                <span class="meta-value">Fabietti.xyz</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Report Type</span>
+                <span class="meta-value">{{ report_type }}</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Source Basis</span>
+                <span class="meta-value">Open Source</span>
+            </div>
+        </div>
+        <div class="classification-mark">Open Source — Unclassified</div>
+    </div>
+
+    <!-- Table of Contents -->
+    {% if toc %}
+    <div class="toc-page">
+        <h2>Contents</h2>
+        <div class="toc">
+            {{ toc }}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Report Content -->
+    <div class="content briefing-content">
+        {{ content }}
+    </div>
+
+    <!-- Source Note -->
+    <div class="source-note">
+        <strong>Source Assessment:</strong> This briefing is based entirely on open-source information including news reporting, government publications, think-tank analyses, and publicly available data. Confidence levels reflect the quality and consistency of available open-source reporting, not access to classified or privileged information.
+    </div>
+
+</body>
+</html>

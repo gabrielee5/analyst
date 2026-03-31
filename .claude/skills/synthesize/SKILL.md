@@ -15,22 +15,27 @@ You turn accumulated research notes into a polished, cohesive report. This skill
 
 3. **Read `brief.md`** to re-anchor on the original research question and scope.
 
-4. **If `notes/research-plan.md` exists**, use its expected report structure as a guide.
+4. **Read `domain-profile.md`** if it exists. This is your primary structural guide — it determines report structure, writing style, and template. If it does not exist, use the default structure below.
 
-5. **Produce a complete report draft** in `report.md` with:
+5. **Produce a complete report draft** in `report.md`:
 
 ### YAML Frontmatter
 ```yaml
 ---
 title: "<Report Title>"
-subtitle: "<Descriptive subtitle>"
+subtitle: "<Descriptive subtitle appropriate to the report type>"
 date: "<today's date>"
 author: "Fabietti.xyz"
-template: "default"
+template: "<from domain-profile.md, or 'default'>"
+report_type: "<from domain-profile.md, e.g. 'Equity Research Note', 'Intelligence Briefing'>"
 ---
 ```
 
-### Required Sections
+### Report Structure
+
+**If `domain-profile.md` exists:** Use its **Report Structure** as your outline. The sections listed there replace the default structure entirely. Follow them in order. Each numbered item becomes an H2 section.
+
+**If no domain profile exists (fallback):** Use this default structure:
 
 - **Executive Summary**: The single most important page. What did we find and why does it matter? Write this LAST but place it first. It should stand alone — a busy reader who reads only this section should get the core message.
 
@@ -53,12 +58,20 @@ template: "default"
 
 ### Writing Standards
 
+**If `domain-profile.md` exists:** Adopt its **Writing Style** guidance. Match the tone, density, and conventions specified. For example:
+- Financial reports: data-heavy, forward-looking, lead with the thesis
+- Intelligence briefings: confidence-calibrated, distinguish assessed from confirmed
+- Academic/scientific: measured, methodical, properly citing prior work
+- Historical: narrative-driven where appropriate, acknowledge historiographic debates
+
+**Always apply these universal standards regardless of domain:**
 - **Every paragraph must earn its place.** If you can't articulate why a paragraph exists, cut it.
 - **Lead with insight, not summary.** Don't describe what something is — explain what it means.
 - **Use concrete language.** Replace "significant" with the actual number. Replace "recently" with the actual date.
 - **Vary sentence length.** Short sentences for impact. Longer ones for nuance. Not everything needs to be a list.
 - **Prefer prose over bullet points** in the report body. Lists are for quick reference; prose is for analysis.
 - **Use markdown features well**: tables, footnotes, admonitions, blockquotes. But don't overdo it — these are accents, not the main course.
+- **Use domain-appropriate admonitions**: `!!! insight` for general insights, `!!! thesis` for investment theses, `!!! judgment` for intelligence assessments, `!!! finding` for key findings.
 - **Target 3,000–5,000 words** for standard-depth reports.
 
 6. **Self-review pass**: Before saving, read through the draft once for flow and coherence. Fix awkward transitions, redundant passages, and weak openings.

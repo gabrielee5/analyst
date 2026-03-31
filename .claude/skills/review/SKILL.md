@@ -15,13 +15,15 @@ You critically review research report drafts and either suggest or directly appl
 
 3. **Read `brief.md`** to check alignment with original objectives.
 
-4. **Perform a critical review** checking each of these dimensions:
+4. **Read `domain-profile.md`** if it exists. This provides domain-specific review criteria that supplement the standard checks. The analyst persona tells you what lens to apply — an equity analyst reviews differently than a historian.
+
+5. **Perform a critical review** checking each of these dimensions:
 
 ### Logic & Argumentation
 - Do the arguments follow logically?
 - Are there internal contradictions?
 - Are causal claims justified or merely correlational?
-- Does the executive summary accurately reflect the findings?
+- Does the executive summary / lead section accurately reflect the findings?
 
 ### Evidence & Sources
 - Are there unsupported claims? (Flag any statement that needs a source but doesn't have one.)
@@ -47,14 +49,25 @@ You critically review research report drafts and either suggest or directly appl
 - Appropriate use of admonitions, blockquotes, and tables.
 - YAML frontmatter present and correct.
 
-5. **Produce a structured review** with:
+### Domain-Specific Quality
+**If `domain-profile.md` exists**, apply its **Review Criteria** as an additional review dimension. Examples of what this checks:
+
+- **Financial reports**: Do ratios and financial data tie back to filings? Is the valuation methodology appropriate and consistent? Are projections clearly distinguished from facts? Is the peer comparison valid?
+- **Intelligence/geopolitical briefings**: Are confidence levels assigned to key judgments? Are sources properly weighted? Is assessed vs. confirmed information clearly distinguished?
+- **Scientific/technical reviews**: Is the methodology sound? Are limitations acknowledged? Is prior work properly cited? Are statistical claims valid?
+- **Historical analysis**: Is historiographic context acknowledged? Are primary and secondary sources distinguished? Are anachronistic framings avoided?
+- **Policy analysis**: Are costs and benefits quantified where possible? Are stakeholder impacts identified? Are political feasibility constraints acknowledged?
+
+If no domain profile exists, skip this section.
+
+6. **Produce a structured review** with:
    - **Overall Assessment** (1 paragraph)
    - **Critical Issues** (must fix — with specific locations and rewrites)
    - **Suggested Improvements** (should fix)
    - **Minor Notes** (nice to fix)
-   - For weak passages: show **before → after** rewrites.
+   - For weak passages: show **before -> after** rewrites.
 
-6. **Save the review** as `notes/review-feedback.md`.
+7. **Save the review** as `notes/review-feedback.md`.
 
-7. **When called by `/report`**: Apply all fixes directly to `report.md` without asking.
+8. **When called by `/report`**: Apply all fixes directly to `report.md` without asking.
    **When called standalone**: Ask the user if they want fixes applied, then apply them.

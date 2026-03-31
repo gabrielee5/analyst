@@ -56,6 +56,7 @@ def render_pdf(md_path: str, template_name: str = "default", output_path: str | 
     subtitle = meta.get("subtitle", "")
     date = meta.get("date", "")
     author = meta.get("author", "Fabietti.xyz")
+    report_type = meta.get("report_type", "Research Report")
     template_name = meta.get("template", template_name)
 
     content_html, toc_html = render_markdown(body)
@@ -75,6 +76,7 @@ def render_pdf(md_path: str, template_name: str = "default", output_path: str | 
         subtitle=subtitle,
         date=date,
         author=author,
+        report_type=report_type,
         toc=toc_html,
     )
 
@@ -99,11 +101,12 @@ def render_pdf(md_path: str, template_name: str = "default", output_path: str | 
 def main():
     parser = argparse.ArgumentParser(description="Render a research report to PDF")
     parser.add_argument("markdown_file", help="Path to the markdown report file")
+    available = [p.stem for p in (Path(__file__).resolve().parent.parent / "templates").glob("*.html")]
     parser.add_argument(
         "--template",
         default="default",
-        choices=["default", "academic"],
-        help="Template to use (default: default)",
+        choices=available,
+        help=f"Template to use (available: {', '.join(sorted(available))})",
     )
     parser.add_argument("--output", default=None, help="Custom output PDF path")
     args = parser.parse_args()

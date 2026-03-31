@@ -532,6 +532,31 @@ hr {
     color: var(--text-muted);
 }
 
+.admonition.thesis {
+    border-left-color: var(--text-bright);
+    background: var(--bg-surface);
+}
+
+.admonition.thesis .admonition-title {
+    color: var(--text-bright);
+}
+
+.admonition.judgment {
+    border-left-color: var(--amber);
+}
+
+.admonition.judgment .admonition-title {
+    color: var(--amber);
+}
+
+.admonition.finding {
+    border-left-color: var(--green);
+}
+
+.admonition.finding .admonition-title {
+    color: var(--green);
+}
+
 /* === Images / Figures === */
 
 img {

@@ -20,6 +20,9 @@ class CalloutPreprocessor(Preprocessor):
         "danger": "&#x1F6A8;",
         "insight": "&#x1F50D;",
         "example": "&#x1F4CB;",
+        "thesis": "&#x1F4C8;",
+        "judgment": "&#x2696;&#xFE0F;",
+        "finding": "&#x1F3AF;",
     }
 
     def run(self, lines):
