@@ -92,6 +92,17 @@ Use these in `report.md`:
 - **Code blocks**: fenced with language identifier for syntax highlighting
 - **Horizontal rules**: `---` for section breaks
 
+## Email Delivery
+
+After rendering a PDF, it is automatically emailed via Gmail SMTP.
+
+- **Default:** ON. Pass `--no-email` to `/render` or `/report` to skip.
+- **Configuration:** set `EMAIL_RECIPIENT`, `SMTP_USER`, and `SMTP_PASSWORD` in `.env` (see `.env.example`).
+- **Subject format:** `[Fabietti.xyz] <report title>`
+- **Script:** `uv run python scripts/email_pdf.py <pdf-path> [--subject "..."] [--to "..."]`
+- If sending fails, the render still succeeds — email is best-effort.
+- Requires a Gmail App Password (not your regular password). Generate one at: https://myaccount.google.com/apppasswords
+
 ## PDF Rendering
 
 The renderer (`scripts/render.py`) converts markdown → HTML → PDF:

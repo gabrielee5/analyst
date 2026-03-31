@@ -36,4 +36,13 @@ You render research reports from markdown to PDF using WeasyPrint.
    - **Encoding issues**: ensure the file is UTF-8.
    Fix the issue and retry.
 
-6. After successful render, tell the user the output path and offer to re-render with a different template.
+6. **Email delivery** (default: ON, skip with `--no-email`):
+   - After a successful render, email the PDF by running:
+     ```bash
+     uv run python scripts/email_pdf.py <pdf-path> --subject "[Fabietti.xyz] <report title>"
+     ```
+   - Recipient and SMTP credentials are configured in `.env`.
+   - If sending fails (missing credentials, network error), warn the user but do NOT fail the render — the PDF is still on disk.
+   - Print status after success: `📧 PDF emailed to <address>`
+
+7. After successful render, tell the user the output path and offer to re-render with a different template.

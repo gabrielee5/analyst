@@ -87,12 +87,20 @@ This is the core research phase. **You MUST spawn parallel sub-agents** — one 
 3. Do a second pass for prose quality: tighten sentences, improve transitions, ensure every paragraph earns its place.
 4. Print status: `✅ Review complete, fixes applied.`
 
-## Phase 6: Render
+## Phase 6: Render & Deliver
 
 1. Run `uv run python scripts/render.py research/<project>/report.md` with the appropriate template flag if specified.
 2. If render fails, diagnose and fix the issue (usually malformed markdown or missing frontmatter), then retry.
 3. Report the output PDF path and file size.
-4. Print final status: `📄 Report complete: research/<slug>/output/report.pdf`
+4. **Email delivery** (default: ON, skip with `--no-email`):
+   - Email the PDF by running:
+     ```bash
+     uv run python scripts/email_pdf.py <pdf-path> --subject "[Fabietti.xyz] <report title>"
+     ```
+   - Recipient and SMTP credentials are configured in `.env`.
+   - If sending fails, warn the user but do NOT block — the PDF is still on disk.
+   - Print status after success: `📧 PDF emailed to <address>`
+5. Print final status: `📄 Report complete: research/<slug>/output/report.pdf`
 
 ## Error Handling
 
