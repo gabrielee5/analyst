@@ -1,4 +1,4 @@
-# Fabietti.xyz — Adaptive Research Analyst
+# gabrielefabietti.xyz — Adaptive Research Analyst
 
 An adaptive research analyst workstation that produces expert-grade research reports as beautifully typeset PDFs. The system **automatically detects the domain** of any topic and adapts its entire pipeline — persona, research strategy, report structure, review criteria, and PDF template — to act as the best analyst for that field.
 

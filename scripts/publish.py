@@ -160,6 +160,16 @@ def build(publish_all: bool = False):
     )
     (SITE_DIR / "index.html").write_text(index_html, encoding="utf-8")
 
+    # Build about page
+    about_template = env.get_template("about.html")
+    about_html = about_template.render(
+        title="About",
+        subtitle="About gabrielefabietti.xyz",
+    )
+    about_dir = SITE_DIR / "about"
+    about_dir.mkdir(parents=True, exist_ok=True)
+    (about_dir / "index.html").write_text(about_html, encoding="utf-8")
+
     print(f"\nSite built: {SITE_DIR}/ ({len(reports)} report{'s' if len(reports) != 1 else ''})")
 
 
