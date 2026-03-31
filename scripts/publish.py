@@ -75,7 +75,7 @@ def collect_reports(publish_all: bool = False) -> list[dict]:
             "title": meta.get("title", slug.replace("-", " ").title()),
             "subtitle": meta.get("subtitle", ""),
             "date": meta.get("date", ""),
-            "author": meta.get("author", "Fabietti.xyz"),
+            "author": meta.get("author", "gabrielefabietti.xyz"),
             "template": meta.get("template", "default"),
             "report_type": meta.get("report_type", "Research Report"),
             "domain": meta.get("domain", ""),

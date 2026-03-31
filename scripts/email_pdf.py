@@ -38,16 +38,16 @@ def send_pdf(pdf_path: str, subject: str | None = None, recipient: str | None = 
         sys.exit(1)
 
     if not subject:
-        subject = f"[Fabietti.xyz] {pdf.stem.replace('-', ' ').replace('_', ' ').title()}"
+        subject = f"[gabrielefabietti.xyz] {pdf.stem.replace('-', ' ').replace('_', ' ').title()}"
 
     msg = EmailMessage()
     msg["From"] = SMTP_USER
     msg["To"] = to
     msg["Subject"] = subject
     msg.set_content(
-        f"Your Fabietti.xyz research report is ready.\n\n"
+        f"Your gabrielefabietti.xyz research report is ready.\n\n"
         f"Find the PDF attached: {pdf.name}\n\n"
-        f"— Fabietti.xyz Research Workstation"
+        f"— gabrielefabietti.xyz Research Workstation"
     )
 
     pdf_data = pdf.read_bytes()
