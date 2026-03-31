@@ -1052,12 +1052,29 @@ figcaption {
 
 @media (max-width: 640px) {
     .container {
-        padding: 0 1.25rem;
+        padding: 0 1rem;
     }
 
-    .report-header .title {
-        font-size: 1.5rem;
-        line-height: 1.2;
+    /* Nav: stack and ensure touch-friendly targets */
+    .nav-inner {
+        flex-direction: column;
+        gap: 0.375rem;
+        align-items: flex-start;
+    }
+
+    .site-nav .logo-link {
+        padding: 0.375rem 0;
+    }
+
+    .nav-links a {
+        padding: 0.5rem 0;
+        display: inline-block;
+    }
+
+    /* Archive page */
+    .archive-header {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
     }
 
     .archive-header h1 {
@@ -1065,33 +1082,11 @@ figcaption {
         line-height: 1.6;
     }
 
-    .report-header .meta-block {
-        flex-direction: column;
-        gap: 0.625rem;
-    }
-
-    .nav-inner {
-        flex-direction: column;
-        gap: 0.625rem;
-        align-items: flex-start;
-    }
-
-    table {
-        font-size: 0.75rem;
-    }
-
-    th {
-        padding: 0.625rem;
-    }
-
-    td {
-        padding: 0.9375rem 0.625rem;
-    }
-
-    /* Stack report rows on mobile */
+    /* Report rows: stack vertically */
     .report-row {
         flex-direction: column;
         gap: 0.25rem;
+        padding: 0.875rem 0;
     }
 
     .row-date {
@@ -1100,5 +1095,63 @@ figcaption {
 
     .row-meta {
         gap: 0.375rem;
+    }
+
+    /* Report header */
+    .report-header .title {
+        font-size: 1.5rem;
+        line-height: 1.2;
+    }
+
+    .report-header .header-top-row {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .report-header .meta-block {
+        flex-direction: column;
+        gap: 0.625rem;
+    }
+
+    /* Tables: keep readable */
+    table {
+        font-size: 0.8125rem;
+    }
+
+    th {
+        padding: 0.625rem;
+    }
+
+    td {
+        padding: 0.75rem 0.625rem;
+    }
+
+    /* Blockquotes & admonitions: tighter on mobile */
+    blockquote {
+        padding: 0.75rem 1rem;
+    }
+
+    .admonition {
+        padding: 1rem;
+    }
+
+    /* Footer: stack */
+    .footer-inner {
+        flex-direction: column;
+        gap: 0.625rem;
+        text-align: center;
+    }
+
+    .footer-right {
+        justify-content: center;
+    }
+
+    .footer-right a {
+        padding: 0.375rem 0;
+    }
+
+    /* PDF download: ensure tap target */
+    .pdf-download {
+        padding: 0.625rem 1rem;
     }
 }
