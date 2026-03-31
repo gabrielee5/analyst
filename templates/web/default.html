@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- Report Header -->
+    <div class="report-header">
+        <div class="sys-label">Research Report</div>
+        <div class="title">{{ title }}</div>
+        {% if subtitle %}
+        <div class="subtitle">{{ subtitle }}</div>
+        {% endif %}
+        <div class="meta-block">
+            {% if date %}
+            <div class="meta-item">
+                <span class="meta-label">Date</span>
+                <span class="meta-value">{{ date }}</span>
+            </div>
+            {% endif %}
+            <div class="meta-item">
+                <span class="meta-label">Prepared by</span>
+                <span class="meta-value">Fabietti.xyz</span>
+            </div>
+        </div>
+        {% if pdf_url %}
+        <a href="{{ pdf_url }}" class="pdf-download">&#x2913; Download PDF</a>
+        {% endif %}
+    </div>
+
+    <!-- Table of Contents -->
+    {% if toc %}
+    <div class="toc-section">
+        <h2>Contents</h2>
+        <div class="toc">
+            {{ toc }}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Report Content -->
+    <div class="content">
+        {{ content }}
+    </div>
+{% endblock %}

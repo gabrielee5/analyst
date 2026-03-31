@@ -17,6 +17,9 @@ research/*
 # Secrets
 .env
 
+# Website build output
+_site/
+
 # OS / IDE
 .DS_Store
 .idea/

@@ -82,6 +82,15 @@ uv run python scripts/render.py research/<project>/report.md --template financia
 
 # Render with custom output path
 uv run python scripts/render.py research/<project>/report.md --output ~/Desktop/report.pdf
+
+# Build the research website (published reports only)
+uv run python scripts/publish.py build
+
+# Build including all reports (ignores published flag)
+uv run python scripts/publish.py build --all
+
+# Build and serve locally for preview
+uv run python scripts/publish.py serve
 ```
 
 ## Skills Reference
@@ -96,6 +105,7 @@ This repo ships with custom Claude Code skills in `.claude/skills/`:
 | `/synthesize` | Turn accumulated notes into a domain-structured report draft |
 | `/review` | Domain-specific critical review and improvement |
 | `/render` | Render report.md to PDF via WeasyPrint |
+| `/publish` | Build the static research website from published reports |
 | `/new-research <topic>` | Scaffold a new research project folder |
 
 ## Research Conventions
@@ -154,6 +164,18 @@ Use these in `report.md`:
 
 Templates auto-selected by domain profile. Override with `--template <name>`.
 
+## Web Publishing
+
+Reports can be published to a static website at `gabrielefabietti.xyz`.
+
+- **Gating:** Only reports with `published: true` in their YAML frontmatter are included. Use `--all` to override.
+- **Build:** `uv run python scripts/publish.py build` outputs to `_site/`.
+- **Preview:** `uv run python scripts/publish.py serve` builds and starts a local server at http://localhost:8000.
+- **Deploy:** Via Vercel (`vercel deploy --prod`).
+- **Templates:** Web templates in `templates/web/` mirror the PDF template variants (default, academic, financial, briefing).
+- **PDF downloads:** If a PDF exists in `research/<project>/output/`, it's automatically included on the report page as a download link.
+- **Site structure:** Index page at `/`, individual reports at `/reports/<slug>/`, PDFs at `/pdfs/<slug>.pdf`.
+
 ## Email Delivery
 
 After rendering a PDF, it is automatically emailed via SMTP.
@@ -174,6 +196,20 @@ The renderer (`scripts/render.py`) converts markdown → HTML → PDF:
 4. Renders to PDF via WeasyPrint
 
 Templates live in `templates/`. The CSS is in `templates/assets/style.css`.
+
+## Design System
+
+The web frontend follows `DESIGN.md` at the project root — the fabietti.xyz brutalist design system. Key rules:
+
+- **Monospace everywhere** — system monospace font stack for all text
+- **0.85px borders** — signature thin border, always `#e5e7eb`
+- **No border-radius** — everything perfectly square (no rounded corners)
+- **No shadows, gradients, or transforms** — brutalist minimalism
+- **14px base font** — rem-based spacing following Tailwind conventions
+- **Color only for status** — green/yellow/red accents in report content (admonitions, badges), monochrome for site chrome
+- **Hover = border darken** — most hover states just change border to `#9ca3af`
+
+Always reference `DESIGN.md` when modifying web templates or `templates/web/assets/style.css`.
 
 ## Dependencies
 

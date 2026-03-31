@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- Report Header -->
+    <div class="report-header">
+        <div class="report-type-label" style="color: var(--amber);">{{ report_type }}</div>
+        <div class="sys-label">Fabietti.xyz Intelligence</div>
+        <div class="title">{{ title }}</div>
+        {% if subtitle %}
+        <div class="subtitle">{{ subtitle }}</div>
+        {% endif %}
+        <div class="meta-block">
+            {% if date %}
+            <div class="meta-item">
+                <span class="meta-label">Date</span>
+                <span class="meta-value">{{ date }}</span>
+            </div>
+            {% endif %}
+            <div class="meta-item">
+                <span class="meta-label">Prepared by</span>
+                <span class="meta-value">Fabietti.xyz</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Report Type</span>
+                <span class="meta-value">{{ report_type }}</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Source Basis</span>
+                <span class="meta-value">Open Source</span>
+            </div>
+        </div>
+        <div class="classification-mark">Open Source — Unclassified</div>
+        {% if pdf_url %}
+        <a href="{{ pdf_url }}" class="pdf-download">&#x2913; Download PDF</a>
+        {% endif %}
+    </div>
+
+    <!-- Table of Contents -->
+    {% if toc %}
+    <div class="toc-section">
+        <h2>Contents</h2>
+        <div class="toc">
+            {{ toc }}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Report Content -->
+    <div class="content briefing-content">
+        {{ content }}
+    </div>
+
+    <!-- Source Note -->
+    <div class="source-note">
+        <strong>Source Assessment:</strong> This briefing is based entirely on open-source information including news reporting, government publications, think-tank analyses, and publicly available data. Confidence levels reflect the quality and consistency of available open-source reporting, not access to classified or privileged information.
+    </div>
+{% endblock %}

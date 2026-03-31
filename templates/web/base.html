@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} — Fabietti.xyz</title>
+    <meta name="description" content="{{ subtitle }}">
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="{{ subtitle }}">
+    <meta property="og:type" content="article">
+    <link rel="stylesheet" href="/assets/style.css">
+    {% block head %}{% endblock %}
+</head>
+<body>
+
+    <nav class="site-nav">
+        <div class="container">
+            <a href="/" class="logo-link">Fabietti.xyz</a>
+            <ul class="nav-links">
+                <li><a href="/">Archive</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            Fabietti.xyz &mdash; Trasformiamo complessit&agrave; in sistemi che funzionano
+        </div>
+    </footer>
+
+</body>
+</html>

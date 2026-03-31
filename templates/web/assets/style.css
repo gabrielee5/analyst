@@ -1,0 +1,973 @@
+/* ============================================================
+   Fabietti.xyz — Web Research Archive Stylesheet
+   Follows DESIGN.md: brutalist, monospace, 0.85px borders, no radius.
+   ============================================================ */
+
+/* === Reset === */
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* === Base === */
+
+html {
+    font-size: 14px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    background: #fff;
+    color: #000;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* === Universal Transitions === */
+
+button, a, input, select, textarea, .report-card, .pdf-download {
+    transition: all 0.15s;
+}
+
+/* === Scrollbars === */
+
+::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+}
+
+/* === Layout === */
+
+.container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+/* === Site Nav === */
+
+.site-nav {
+    border-bottom: 0.85px solid #e5e7eb;
+    padding: 0.9375rem 0;
+    margin-bottom: 2.5rem;
+}
+
+.site-nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-nav .logo-link {
+    font-size: 0.75rem;
+    color: #000;
+    text-decoration: none;
+    letter-spacing: 0.025em;
+    font-weight: 600;
+}
+
+.site-nav .logo-link:hover {
+    color: #000;
+}
+
+.site-nav .nav-links {
+    display: flex;
+    gap: 1.25rem;
+    list-style: none;
+}
+
+.site-nav .nav-links a {
+    font-size: 0.75rem;
+    color: #6b7280;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
+.site-nav .nav-links a:hover {
+    color: #000;
+}
+
+/* === Report Header === */
+
+.report-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 0.85px solid #e5e7eb;
+}
+
+.report-header .report-type-label {
+    font-size: 0.75rem;
+    color: #166534;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    font-weight: 500;
+    margin-bottom: 0.375rem;
+}
+
+.report-header .sys-label {
+    font-size: 0.75rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    margin-bottom: 0.625rem;
+}
+
+.report-header .title {
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: #000;
+    line-height: 2.5rem;
+    margin-bottom: 0.625rem;
+}
+
+.report-header .subtitle {
+    font-size: 1rem;
+    color: #6b7280;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+}
+
+.report-header .meta-block {
+    display: flex;
+    gap: 1.875rem;
+    flex-wrap: wrap;
+}
+
+.report-header .meta-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.report-header .meta-label {
+    font-size: 0.75rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    margin-bottom: 0.125rem;
+}
+
+.report-header .meta-value {
+    font-size: 0.875rem;
+    color: #000;
+}
+
+/* PDF download button — secondary button style from DESIGN.md */
+.pdf-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.875rem;
+    color: #000;
+    text-decoration: none;
+    border: 0.85px solid #e5e7eb;
+    padding: 0.625rem 1.25rem;
+    margin-top: 1.25rem;
+    font-family: inherit;
+}
+
+.pdf-download:hover {
+    color: #000;
+    border-color: #9ca3af;
+    background: #f9fafb;
+}
+
+/* === Table of Contents === */
+
+.toc-section {
+    margin-bottom: 1.875rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 0.85px solid #e5e7eb;
+}
+
+.toc-section h2 {
+    font-size: 0.75rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    border-bottom: none;
+    padding-bottom: 0.625rem;
+    margin-top: 0;
+    margin-bottom: 0.9375rem;
+    font-weight: 500;
+}
+
+.toc-section h2::before {
+    content: none;
+}
+
+.toc ul {
+    list-style: none;
+}
+
+.toc li {
+    margin: 0;
+    padding: 0;
+}
+
+.toc > ul > li {
+    margin-bottom: 0.125rem;
+    padding: 0.375rem 0;
+    border-bottom: 0.85px solid #e5e7eb;
+}
+
+.toc > ul > li > a {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #000;
+    text-decoration: none;
+}
+
+.toc > ul > li > ul > li > a {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #6b7280;
+    text-decoration: none;
+    padding-left: 1.25rem;
+    display: block;
+    margin-top: 0.125rem;
+}
+
+.toc a:hover {
+    color: #000;
+}
+
+/* === Headings === */
+
+h1, h2, h3, h4, h5, h6 {
+    color: #000;
+    line-height: 1.3;
+}
+
+.content h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-bottom: 0.85px solid #e5e7eb;
+    padding-bottom: 0.625rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.content h1:first-child {
+    display: none;
+}
+
+h2 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-top: 2.5rem;
+    margin-bottom: 0.625rem;
+    padding-bottom: 0.375rem;
+    border-bottom: 0.85px solid #e5e7eb;
+}
+
+h2::before {
+    content: "// ";
+    color: #6b7280;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 1.875rem;
+    margin-bottom: 0.375rem;
+    color: #000;
+}
+
+h4 {
+    font-weight: 500;
+    margin-top: 1.25rem;
+    margin-bottom: 0.375rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    font-size: 0.75rem;
+}
+
+/* Permalink anchors */
+.headerlink {
+    color: #9ca3af;
+    text-decoration: none;
+    margin-left: 0.375rem;
+    opacity: 0;
+    transition: all 0.15s;
+    font-weight: 400;
+}
+
+h2:hover .headerlink,
+h3:hover .headerlink {
+    opacity: 1;
+}
+
+/* === Paragraphs & Inline === */
+
+p {
+    margin: 0 0 0.625rem 0;
+}
+
+strong {
+    font-weight: 600;
+    color: #000;
+}
+
+em {
+    font-style: italic;
+}
+
+a {
+    color: #000;
+    text-decoration: underline;
+    text-decoration-color: #d1d5db;
+    text-underline-offset: 2px;
+}
+
+a:hover {
+    text-decoration-color: #000;
+}
+
+/* === Blockquotes === */
+
+blockquote {
+    margin: 1.25rem 0;
+    padding: 0.9375rem 1.25rem;
+    border-left: 0.85px solid #9ca3af;
+    background: #f9fafb;
+    color: #6b7280;
+    font-style: italic;
+}
+
+blockquote p {
+    margin: 0;
+}
+
+blockquote p + p {
+    margin-top: 0.625rem;
+}
+
+/* === Tables === */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.25rem 0;
+    font-size: 0.875rem;
+}
+
+thead {
+    background: #f9fafb;
+    border-bottom: 0.85px solid #e5e7eb;
+}
+
+th {
+    font-weight: 500;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    text-align: left;
+    padding: 0.9375rem 1.25rem;
+    color: #6b7280;
+}
+
+td {
+    padding: 1.25rem;
+    border-bottom: 0.85px solid #e5e7eb;
+    vertical-align: top;
+    color: #000;
+}
+
+tbody tr:hover {
+    background: #f9fafb;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Responsive table wrapper */
+.table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* === Code === */
+
+code {
+    font-family: inherit;
+    font-size: 0.875rem;
+    background: #f9fafb;
+    border: 0.85px solid #e5e7eb;
+    padding: 0.125rem 0.375rem;
+    color: #166534;
+}
+
+pre {
+    background: #f9fafb;
+    color: #000;
+    padding: 1.25rem;
+    border: 0.85px solid #e5e7eb;
+    overflow-x: auto;
+    margin: 1.25rem 0;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+}
+
+.highlight {
+    background: #f9fafb;
+    color: #000;
+    padding: 1.25rem;
+    border: 0.85px solid #e5e7eb;
+    margin: 1.25rem 0;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.highlight pre {
+    background: none;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+/* === Lists === */
+
+ul, ol {
+    margin: 0.625rem 0 0.9375rem 0;
+    padding-left: 1.25rem;
+}
+
+li {
+    margin-bottom: 0.375rem;
+}
+
+li > ul, li > ol {
+    margin-top: 0.375rem;
+    margin-bottom: 0;
+}
+
+li::marker {
+    color: #6b7280;
+}
+
+/* === Horizontal Rules === */
+
+hr {
+    border: none;
+    height: 0.85px;
+    background: #e5e7eb;
+    margin: 1.875rem 0;
+}
+
+/* === Footnotes === */
+
+.footnote {
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: #6b7280;
+    margin-top: 2.5rem;
+    padding-top: 0.9375rem;
+    border-top: 0.85px solid #e5e7eb;
+}
+
+.footnote ol {
+    padding-left: 1.25rem;
+}
+
+.footnote li {
+    margin-bottom: 0.375rem;
+}
+
+.footnote-ref {
+    font-size: 0.625rem;
+    vertical-align: super;
+    text-decoration: none;
+    color: #6b7280;
+}
+
+.footnote-backref {
+    text-decoration: none;
+    color: #6b7280;
+}
+
+/* === Admonitions / Callouts === */
+
+.admonition {
+    margin: 1.25rem 0;
+    padding: 1.25rem;
+    border-left: 0.85px solid #9ca3af;
+    background: #f9fafb;
+}
+
+.admonition-title {
+    font-weight: 500;
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin: 0 0 0.375rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
+.admonition p:last-child {
+    margin-bottom: 0;
+}
+
+.admonition.warning {
+    border-left-color: #eab308;
+    background: #fefce8;
+}
+
+.admonition.warning .admonition-title {
+    color: #854d0e;
+}
+
+.admonition.danger {
+    border-left-color: #ef4444;
+    background: #fef2f2;
+}
+
+.admonition.danger .admonition-title {
+    color: #991b1b;
+}
+
+.admonition.tip, .admonition.insight {
+    border-left-color: #22c55e;
+    background: #f0fdf4;
+}
+
+.admonition.tip .admonition-title,
+.admonition.insight .admonition-title {
+    color: #166534;
+}
+
+.admonition.note {
+    border-left-color: #9ca3af;
+}
+
+.admonition.note .admonition-title {
+    color: #6b7280;
+}
+
+.admonition.thesis {
+    border-left-color: #000;
+    background: #f9fafb;
+}
+
+.admonition.thesis .admonition-title {
+    color: #000;
+}
+
+.admonition.judgment {
+    border-left-color: #eab308;
+    background: #fefce8;
+}
+
+.admonition.judgment .admonition-title {
+    color: #854d0e;
+}
+
+.admonition.finding {
+    border-left-color: #22c55e;
+    background: #f0fdf4;
+}
+
+.admonition.finding .admonition-title {
+    color: #166534;
+}
+
+/* === Images / Figures === */
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1.25rem auto;
+}
+
+figure {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+figcaption {
+    font-size: 0.75rem;
+    font-style: normal;
+    color: #6b7280;
+    margin-top: 0.375rem;
+    text-align: center;
+    letter-spacing: 0.025em;
+}
+
+/* === Site Footer === */
+
+.site-footer {
+    font-size: 0.75rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    text-align: center;
+    margin-top: 2.5rem;
+    padding: 1.25rem 0;
+    border-top: 0.85px solid #e5e7eb;
+}
+
+.site-footer a {
+    color: #6b7280;
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    color: #000;
+}
+
+/* === Index / Archive Page === */
+
+.archive-header {
+    margin-bottom: 2.5rem;
+}
+
+.archive-header h1 {
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: #000;
+    line-height: 2.5rem;
+    margin-bottom: 0.625rem;
+}
+
+.archive-header p {
+    color: #6b7280;
+    font-size: 1rem;
+}
+
+.report-list {
+    list-style: none;
+}
+
+.report-card {
+    padding: 1.25rem 0;
+    border-bottom: 0.85px solid #e5e7eb;
+}
+
+.report-card:first-child {
+    padding-top: 0;
+}
+
+.report-card .card-meta {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    margin-bottom: 0.375rem;
+    display: flex;
+    gap: 0.9375rem;
+}
+
+.report-card .card-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.375rem;
+}
+
+.report-card .card-title a {
+    color: #000;
+    text-decoration: none;
+}
+
+.report-card .card-title a:hover {
+    text-decoration: underline;
+    text-decoration-color: #d1d5db;
+    text-underline-offset: 2px;
+}
+
+.report-card .card-subtitle {
+    color: #6b7280;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.report-card .card-links {
+    margin-top: 0.625rem;
+    display: flex;
+    gap: 0.9375rem;
+}
+
+.report-card .card-links a {
+    font-size: 0.75rem;
+    color: #6b7280;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
+.report-card .card-links a:hover {
+    color: #000;
+}
+
+/* === Template-Specific Overrides === */
+
+/* Academic */
+.academic-content {
+    counter-reset: section;
+}
+
+.academic-content h2 {
+    counter-increment: section;
+    font-size: 1.125rem;
+    color: #000;
+}
+
+.academic-content h2::before {
+    content: counter(section) ". ";
+    font-weight: 600;
+    color: #6b7280;
+}
+
+.academic-content h3 {
+    font-size: 1rem;
+}
+
+.abstract {
+    margin: 0 0 1.25rem 0;
+    padding: 0.9375rem 0;
+    border-bottom: 0.85px solid #e5e7eb;
+}
+
+.abstract h3 {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    color: #6b7280;
+    margin: 0 0 0.375rem 0;
+}
+
+.abstract p {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin: 0;
+}
+
+/* Financial */
+.financial-content h2 {
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.financial-content table {
+    font-size: 0.875rem;
+}
+
+.financial-content th {
+    font-size: 0.75rem;
+    padding: 0.625rem 0.9375rem;
+}
+
+.financial-content td {
+    padding: 0.9375rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.financial-content td:not(:first-child),
+.financial-content th:not(:first-child) {
+    text-align: right;
+}
+
+.disclaimer {
+    margin-top: 2.5rem;
+    padding-top: 0.9375rem;
+    border-top: 0.85px solid #e5e7eb;
+    font-size: 0.75rem;
+    color: #9ca3af;
+    line-height: 1.5;
+}
+
+/* Briefing */
+.briefing-content h2 {
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.briefing-content h2::before {
+    content: none;
+}
+
+.briefing-content p {
+    margin: 0 0 0.625rem 0;
+}
+
+.key-judgments {
+    margin: 0 0 1.25rem 0;
+    padding: 1.25rem;
+    background: #f9fafb;
+    border: 0.85px solid #e5e7eb;
+    border-top: 0.85px solid #000;
+}
+
+.key-judgments h3 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    color: #000;
+    margin: 0 0 0.625rem 0;
+}
+
+.key-judgments ul {
+    margin: 0;
+    padding-left: 1.25rem;
+}
+
+.key-judgments li {
+    font-size: 0.875rem;
+    margin-bottom: 0.375rem;
+    line-height: 1.5;
+}
+
+.key-findings {
+    margin: 0 0 1.25rem 0;
+    padding: 1.25rem;
+    background: #f9fafb;
+    border: 0.85px solid #e5e7eb;
+    border-left: 0.85px solid #000;
+}
+
+.key-findings h3 {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    color: #6b7280;
+    margin: 0 0 0.625rem 0;
+}
+
+.key-findings ul {
+    margin: 0;
+    padding-left: 1.25rem;
+}
+
+.key-findings li {
+    font-size: 0.875rem;
+    margin-bottom: 0.375rem;
+    line-height: 1.5;
+}
+
+/* Confidence badges (briefing) — badge style from DESIGN.md */
+.confidence-high,
+.confidence-moderate,
+.confidence-low {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    padding: 0.125rem 0.625rem;
+    vertical-align: middle;
+    margin-left: 0.375rem;
+    border: 0.85px solid;
+}
+
+.confidence-high {
+    background: #f0fdf4;
+    color: #166534;
+    border-color: #bbf7d0;
+}
+
+.confidence-moderate {
+    background: #fefce8;
+    color: #854d0e;
+    border-color: #fef08a;
+}
+
+.confidence-low {
+    background: #fef2f2;
+    color: #991b1b;
+    border-color: #fecaca;
+}
+
+.classification-mark {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    margin-top: 0.9375rem;
+}
+
+.source-note {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    margin-top: 2.5rem;
+    padding-top: 0.9375rem;
+    border-top: 0.85px solid #e5e7eb;
+    line-height: 1.5;
+}
+
+/* === Responsive === */
+
+@media (max-width: 640px) {
+    .container {
+        padding: 0 1.25rem;
+    }
+
+    .report-header .title {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+
+    .archive-header h1 {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+
+    .report-header .meta-block {
+        flex-direction: column;
+        gap: 0.625rem;
+    }
+
+    .site-nav .container {
+        flex-direction: column;
+        gap: 0.625rem;
+        align-items: flex-start;
+    }
+
+    table {
+        font-size: 0.75rem;
+    }
+
+    th {
+        padding: 0.625rem;
+    }
+
+    td {
+        padding: 0.9375rem 0.625rem;
+    }
+
+    .report-card .card-meta {
+        flex-direction: column;
+        gap: 0.125rem;
+    }
+}
