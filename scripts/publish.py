@@ -3,6 +3,7 @@
 
 import argparse
 import http.server
+import re
 import shutil
 import sys
 from pathlib import Path
@@ -72,6 +73,7 @@ def collect_reports(publish_all: bool = False) -> list[dict]:
 
         reports.append({
             "slug": slug,
+            "report_path": report_path,
             "title": meta.get("title", slug.replace("-", " ").title()),
             "subtitle": meta.get("subtitle", ""),
             "date": meta.get("date", ""),
@@ -140,9 +142,24 @@ def build(publish_all: bool = False):
             pdf_url=report["pdf_url"],
         )
 
-        # Write report page
+        # Copy chart images and rewrite absolute file:// paths to relative URLs
+        charts_src = report["report_path"].parent / "output" / "charts"
         report_dir = SITE_DIR / "reports" / report["slug"]
         report_dir.mkdir(parents=True, exist_ok=True)
+
+        if charts_src.exists() and any(charts_src.iterdir()):
+            charts_dst = report_dir / "charts"
+            charts_dst.mkdir(exist_ok=True)
+            for img in charts_src.glob("*.png"):
+                shutil.copy2(img, charts_dst / img.name)
+            # Rewrite file:// URLs to relative paths
+            html = re.sub(
+                r'src="file:///[^"]*?/output/charts/([^"]+)"',
+                r'src="./charts/\1"',
+                html,
+            )
+
+        # Write report page
         (report_dir / "index.html").write_text(html, encoding="utf-8")
 
         # Copy PDF if available
