@@ -233,6 +233,12 @@ The quarter-century following World War II was Bethlehem Steel's zenith. The com
 | U.S. Supreme Court Building | Washington, DC | 1935 |
 | Chicago Merchandise Mart | Chicago | 1930 |
 
+### Production Volume and Employment
+
+![Steel Production](file:///Users/gabrielefabietti/projects/analyst/research/bethlehem-steel-complete-corporate-history-and-financial-analysis/output/charts/production.png)
+
+![Employment](file:///Users/gabrielefabietti/projects/analyst/research/bethlehem-steel-complete-corporate-history-and-financial-analysis/output/charts/employment.png)
+
 ### Financial Performance at the Peak
 
 | Year | Revenue | Net Income | Raw Steel (tons) | Employees |
@@ -266,9 +272,13 @@ Three forces converged to destroy Bethlehem Steel's competitive position:
 
 **2. The mini-mill revolution.** Ken Iverson took over a bankrupt Nuclear Corporation of America in 1965 and reinvented it as Nucor, using electric arc furnaces to melt scrap steel at a fraction of integrated mill costs. Nucor's first mill was built for $6 million -- a rounding error against the billions required for a blast furnace complex. The cost advantage was $50-$70/ton. In 1989, Nucor opened the world's first thin-slab casting mini-mill at Crawfordsville, Indiana, breaking integrated producers' monopoly on flat-rolled products. Mini-mill market share grew from 17.4% (1971) to 46% (2000) to approximately 70% today.
 
+![Technology Gap: Continuous Casting](file:///Users/gabrielefabietti/projects/analyst/research/bethlehem-steel-complete-corporate-history-and-financial-analysis/output/charts/technology_gap.png)
+
 **3. Bethlehem's own technology gap.** The failure to adopt continuous casting was the critical error. In 1975, only 9% of U.S. steel was continuously cast versus 31% in Japan and 24% in West Germany. The yield gap alone -- 18 percentage points of lost efficiency -- made U.S. producers structurally uncompetitive. U.S. labor productivity improved only 16% in a decade in which Japanese productivity doubled.
 
-### Import Penetration
+### Import Penetration and Mini-Mill Growth
+
+![Competitive Threats](file:///Users/gabrielefabietti/projects/analyst/research/bethlehem-steel-complete-corporate-history-and-financial-analysis/output/charts/competitive_threats.png)
 
 | Period | Steel Imports (% of U.S. consumption) |
 |--------|---------------------------------------|
@@ -334,6 +344,10 @@ The Lukens acquisition in 1998 ($490M plus $250M assumed debt) was the final str
 
 ### The Legacy Cost Death Spiral
 
+![Active Workers vs Retirees](file:///Users/gabrielefabietti/projects/analyst/research/bethlehem-steel-complete-corporate-history-and-financial-analysis/output/charts/legacy_burden.png)
+
+![Pension Underfunding](file:///Users/gabrielefabietti/projects/analyst/research/bethlehem-steel-complete-corporate-history-and-financial-analysis/output/charts/pension_underfunding.png)
+
 The numbers at bankruptcy were devastating:
 
 | Liability | Amount |
@@ -366,6 +380,8 @@ Ross later sold ISG to Mittal Steel in 2005, which merged with Arcelor in 2006 t
 
 ### Revenue Arc
 
+![Bethlehem Steel Revenue 1940-2001](file:///Users/gabrielefabietti/projects/analyst/research/bethlehem-steel-complete-corporate-history-and-financial-analysis/output/charts/revenue_arc.png)
+
 | Year | Revenue | Context |
 |------|---------|---------|
 | Pre-war | $135M | Gross sales before WWII |
@@ -378,6 +394,8 @@ Ross later sold ISG to Mittal Steel in 2005, which merged with Arcelor in 2006 t
 | 2001 | $3.76B | At bankruptcy |
 
 ### Profitability Trajectory
+
+![Bethlehem Steel Net Income / Loss](file:///Users/gabrielefabietti/projects/analyst/research/bethlehem-steel-complete-corporate-history-and-financial-analysis/output/charts/net_income.png)
 
 | Period | Net Income | Margin | Signal |
 |--------|-----------|--------|--------|
@@ -410,6 +428,8 @@ Ross later sold ISG to Mittal Steel in 2005, which merged with Arcelor in 2006 t
 
 Bethlehem Steel traded on the NYSE under ticker "BS" from 1906 until delisting in June 2002. It was a component of the Dow Jones Industrial Average for 69 years (1928-1997) and a member of the S&P 500 from its inception in 1957 through 2000.
 
+![Bethlehem Steel Stock Price](file:///Users/gabrielefabietti/projects/analyst/research/bethlehem-steel-complete-corporate-history-and-financial-analysis/output/charts/stock_price.png)
+
 | Period | Stock Price | Context |
 |--------|------------|---------|
 | Pre-WWI | ~$30 | Small industrial |
@@ -437,6 +457,8 @@ The defining comparison of American industrial history:
 | Employees | ~13,000 | ~7,000 |
 | Status | Chapter 11 | Profitable, growing |
 | Legacy costs | $7+ billion | Near zero |
+
+![Nucor vs Bethlehem Revenue Divergence](file:///Users/gabrielefabietti/projects/analyst/research/bethlehem-steel-complete-corporate-history-and-financial-analysis/output/charts/nucor_divergence.png)
 
 Jim Collins' research found that $1 invested in Nucor versus $1 in Bethlehem Steel diverged by over 200x. Nucor's revenue trajectory tells the story:
 
