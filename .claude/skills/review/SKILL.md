@@ -30,6 +30,7 @@ You critically review research report drafts and either suggest or directly appl
 - Are sources credible and current?
 - Is evidence presented fairly, or is it cherry-picked?
 - Are data points specific (numbers, dates) or vague ("significant", "many")?
+- **Footnote citation check (critical):** Every specific data point, financial figure, quote, and non-obvious fact MUST have a `[^N]` inline footnote marker. The report should have 25-40 footnotes minimum. Sources must ONLY appear as numbered `[^N]:` definitions at the bottom — never as a prose bullet list. If the report uses a "Sources Consulted" list instead of inline footnotes, flag this as a critical issue and fix it.
 
 ### Completeness
 - What important angles were missed?
@@ -48,6 +49,7 @@ You critically review research report drafts and either suggest or directly appl
 - Proper markdown: consistent heading levels, working footnotes, clean tables.
 - Appropriate use of admonitions, blockquotes, and tables.
 - YAML frontmatter present and correct.
+- Every `[^N]` in the body has a matching `[^N]:` definition, and vice versa — no orphaned references or unused definitions.
 
 ### Domain-Specific Quality
 **If `domain-profile.md` exists**, apply its **Review Criteria** as an additional review dimension. Examples of what this checks:

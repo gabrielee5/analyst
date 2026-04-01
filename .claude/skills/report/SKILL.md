@@ -146,6 +146,7 @@ This is the core research phase. **You MUST spawn parallel sub-agents** — one 
    - Use admonitions (`!!! insight "Key Insight"`, `!!! thesis "Investment Thesis"`, `!!! judgment "Key Assessment"`) for standout findings — choose the type that fits the domain.
    - Vary sentence length. Prefer prose over lists where it reads better.
    - Aim for 3,000–5,000 words for standard depth.
+   - **Inline footnote citations are mandatory.** Every specific data point, financial figure, quote, and non-obvious fact must have a `[^N]` marker linking to a footnote definition at the bottom. Aim for 25-40 footnotes. Never use a prose bullet list of sources — all sources must be numbered footnotes referenced from the text. See the `/synthesize` skill for full citation rules.
 7. **Generate `charts.json`** alongside the report. Read the **Charts** section of the domain profile to determine what visualizations are needed. Extract actual numeric data from the research notes and structure it as chart specs. See the `/synthesize` skill for the full `charts.json` format. Every data table with 5+ rows of numeric time-series data should have a companion chart.
 8. Print status: `✍️ Report draft complete.`
 

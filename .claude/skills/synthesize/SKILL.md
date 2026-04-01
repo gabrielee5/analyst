@@ -54,7 +54,30 @@ report_type: "<from domain-profile.md, e.g. 'Equity Research Note', 'Intelligenc
 
 - **Open Questions**: What remains unresolved or worth watching? These should be genuine unknowns, not rhetorical questions.
 
-- **Sources**: All references used, formatted as markdown footnotes (`[^1]`).
+- **Sources**: All references as numbered markdown footnotes (`[^1]`, `[^2]`, etc.). See citation rules below.
+
+### Citation Rules (Mandatory)
+
+Every report must use **inline numbered footnotes** for all significant factual claims. This is non-negotiable — it is the house style.
+
+1. **Add `[^N]` markers inline** at every specific data point, financial figure, date, quote, production number, or sourced claim throughout the body text. Aim for 25-40 footnotes in a standard report.
+2. **Create matching `[^N]:` definitions** in a `## Sources and References` section at the very end of the report.
+3. **Footnote definitions must be concise**: Author/Publication, "Article Title" (Year) or brief description. No URLs in the footnote text — keep them clean.
+4. **Number sequentially** from `[^1]` onwards. Every `[^N]` in the body must have exactly one matching definition, and vice versa.
+5. **Never use a prose bullet list of sources.** No "### Sources Consulted" sections with dashes. Every source must be a numbered footnote referenced from the text.
+6. **Use the research notes** in `notes/` to find the correct source for each claim — the notes have detailed citations with URLs.
+7. **Do not over-cite**: obvious context and common knowledge don't need footnotes. But every specific number, quote, or non-obvious fact does.
+
+**Example of correct style in body text:**
+```
+Bethlehem produced over 60% of Allied finished artillery and guns.[^5] Revenue surged from $135 million to $1.33 billion.[^6]
+```
+
+**Example of correct footnote definitions:**
+```
+[^5]: Lehigh University Environmental Initiative, "Bethlehem Steel."
+[^6]: FundingUniverse, "History of Bethlehem Steel Corporation."
+```
 
 ### Writing Standards
 
