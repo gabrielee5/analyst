@@ -34,5 +34,17 @@
         </div>
     </footer>
 
+    <button class="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0})">&#x2191;</button>
+    <script>
+    (function(){
+        var btn=document.querySelector('.back-to-top');
+        var shown=false;
+        window.addEventListener('scroll',function(){
+            var show=window.scrollY>600;
+            if(show!==shown){shown=show;btn.classList.toggle('visible',show);}
+        },{passive:true});
+    })();
+    </script>
+
 </body>
 </html>

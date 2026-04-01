@@ -1154,4 +1154,47 @@ figcaption {
     .pdf-download {
         padding: 0.625rem 1rem;
     }
+
+    .back-to-top {
+        bottom: 1.25rem;
+        right: 1.25rem;
+        width: 2.25rem;
+        height: 2.25rem;
+        font-size: 1rem;
+    }
+}
+
+/* === Back to Top === */
+
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.125rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fafafa;
+    color: #6b7280;
+    border: 0.85px solid #e5e7eb;
+    border-radius: 0;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s, border-color 0.15s, color 0.15s;
+    font-family: inherit;
+    z-index: 90;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.back-to-top:hover {
+    border-color: #9ca3af;
+    color: #000;
 }
