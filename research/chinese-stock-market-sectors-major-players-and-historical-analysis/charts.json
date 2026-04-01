@@ -1,0 +1,135 @@
+[
+  {
+    "id": "sse_composite_history",
+    "title": "SSE Composite Index (1991-2025)",
+    "type": "line",
+    "section_anchor": "Index Performance & Price History",
+    "placement": "after_heading",
+    "x_label": "Year",
+    "y_label": "Index Level",
+    "data": {
+      "x": [1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025],
+      "y": [293,780,834,648,555,917,1194,1147,1367,2073,1646,1358,1497,1267,1161,2675,5262,1821,3277,2808,2199,2269,2116,3235,3539,3104,3307,2494,3050,3473,3640,3089,2975,3352,3969]
+    },
+    "annotations": [
+      {"x": 2007, "text": "ATH: 6,124"},
+      {"x": 2008, "text": "GFC: -65%"},
+      {"x": 2015, "text": "Bubble peak"},
+      {"x": 2024, "text": "Stimulus rally"}
+    ],
+    "color": "#2563eb",
+    "fill": true
+  },
+  {
+    "id": "csi300_history",
+    "title": "CSI 300 Index (2005-2025)",
+    "type": "line",
+    "section_anchor": "Index Performance & Price History",
+    "placement": "before_paragraph:4",
+    "x_label": "Year",
+    "y_label": "Index Level",
+    "data": {
+      "x": [2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025],
+      "y": [923,2041,5338,1818,3576,3128,2346,2523,2330,3534,3731,3310,4031,3011,4097,5211,4940,3872,3431,3935,4500]
+    },
+    "annotations": [
+      {"x": 2007, "text": "Peak: 5,338"},
+      {"x": 2008, "text": "-66%"},
+      {"x": 2020, "text": "COVID rally"}
+    ],
+    "color": "#7c3aed",
+    "fill": true
+  },
+  {
+    "id": "hang_seng_history",
+    "title": "Hang Seng Index (1990-2025)",
+    "type": "line",
+    "section_anchor": "Index Performance & Price History",
+    "placement": "before_paragraph:7",
+    "x_label": "Year",
+    "y_label": "Index Level",
+    "data": {
+      "x": [1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025],
+      "y": [3025,4297,5512,11888,8191,10073,13451,10723,10049,16962,15096,11397,9321,12576,14230,14876,19965,27813,14387,21873,23035,18434,22657,23306,23605,21914,22001,29919,25846,28190,27231,23398,19781,17047,20060,25631]
+    },
+    "annotations": [
+      {"x": 2007, "text": "ATH: 31,958"},
+      {"x": 2022, "text": "Low: 14,597"},
+      {"x": 2025, "text": "DeepSeek rally"}
+    ],
+    "color": "#ea580c",
+    "fill": true
+  },
+  {
+    "id": "sector_weights",
+    "title": "CSI 300 Sector Weights (September 2025)",
+    "type": "bar",
+    "section_anchor": "Sector Landscape",
+    "placement": "after_heading",
+    "x_label": "Sector",
+    "y_label": "Weight (%)",
+    "data": {
+      "x": ["Financials","IT","Industrials","Materials","Cons. Staples","Cons. Disc.","Healthcare","Utilities","Energy","Comm. Svcs","Real Estate"],
+      "y": [22.6,19.9,18.2,9.2,9.0,7.6,6.4,3.0,2.1,1.0,0.9]
+    },
+    "color": "#2563eb"
+  },
+  {
+    "id": "sector_evolution",
+    "title": "CSI 300 Sector Weight Evolution: Financials vs IT",
+    "type": "dual_line",
+    "section_anchor": "Sector Landscape",
+    "placement": "before_paragraph:3",
+    "x_label": "Year",
+    "y_label": "Weight (%)",
+    "data": {
+      "x": [2010,2012,2015,2018,2020,2022,2025],
+      "series": [
+        {"label": "Financials", "y": [40,38,34,29,26,24,22.6], "color": "#dc2626"},
+        {"label": "Information Technology", "y": [6,7,8,13,16,19,19.9], "color": "#2563eb"}
+      ]
+    }
+  },
+  {
+    "id": "top_companies_mcap",
+    "title": "China's Largest Listed Companies by Market Cap (2026)",
+    "type": "bar",
+    "section_anchor": "Major Players by Sector",
+    "placement": "after_heading",
+    "x_label": "",
+    "y_label": "Market Cap (USD Billions)",
+    "data": {
+      "x": ["BYD","Tencent","ICBC","CCB","ABC","PetroChina","CATL","Alibaba","Moutai","Ping An","BOC","PDD","CMB","CNOOC","Shenhua","Xiaomi"],
+      "y": [894,590,376,343,338,282,275,290,254,155,248,140,147,141,116,109]
+    },
+    "color": "#16a34a"
+  },
+  {
+    "id": "northbound_flows",
+    "title": "Stock Connect Northbound Annual Net Inflows",
+    "type": "bar",
+    "section_anchor": "Foreign Access & Capital Flows",
+    "placement": "after_heading",
+    "x_label": "Year",
+    "y_label": "RMB Billions",
+    "data": {
+      "x": ["2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025"],
+      "y": [57,183,61,200,294,351,209,432,90,44,70,120]
+    },
+    "color": "#2563eb"
+  },
+  {
+    "id": "foreign_ownership_comparison",
+    "title": "Foreign Ownership of Equities: China vs Peers",
+    "type": "bar",
+    "section_anchor": "Foreign Access & Capital Flows",
+    "placement": "before_paragraph:4",
+    "x_label": "",
+    "y_label": "Foreign Ownership (% of Market Cap)",
+    "data": {
+      "x": ["China A-shares","India","Brazil","South Korea","Taiwan"],
+      "y": [3.5,17,17,28,40]
+    },
+    "color": "#7c3aed"
+  }
+]
