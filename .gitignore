@@ -7,12 +7,11 @@ dist/
 build/
 .venv/
 
-# Research outputs (PDFs)
-**/output/*.pdf
+# Research outputs (PDFs are committed via git add -f when needed)
+# **/output/*.pdf
 
-# Research projects (except the example)
-research/*
-!research/_example/
+# Research project scaffolding example
+# All research projects are now tracked
 
 # Secrets
 .env
