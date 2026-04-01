@@ -1,0 +1,1157 @@
+/* ============================================================
+   gabrielefabietti.xyz — Web Research Archive Stylesheet
+   Follows DESIGN.md: brutalist, monospace, 0.85px borders, no radius.
+
+   Inspired by: gwern.net (sidenotes, metadata), danluu.com (bare lists),
+   citriniresearch.com (editorial spacing), tufte-css (reading comfort).
+   ============================================================ */
+
+/* === Reset === */
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* === Base === */
+
+html {
+    font-size: 14px;
+    scroll-behavior: smooth;
+    scroll-padding-top: 4rem;
+}
+
+body {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    background: #fafafa;
+    color: #000;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+.site-body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.site-body .container {
+    flex: 1;
+}
+
+
+/* === Universal Transitions === */
+
+button, a, input, select, textarea, .report-row, .pdf-download {
+    transition: all 0.15s;
+}
+
+/* === Scrollbars === */
+
+::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+}
+
+/* === Layout === */
+
+.container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+/* === Site Nav === */
+
+.site-nav {
+    border-bottom: 0.85px solid #e5e7eb;
+    padding: 0.9375rem 1.25rem;
+    position: sticky;
+    top: 0;
+    background: #fafafa;
+    z-index: 100;
+}
+
+.nav-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.site-nav .logo-link {
+    font-size: 1.125rem;
+    color: #000;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    text-transform: lowercase;
+}
+
+.site-nav .logo-link:hover {
+    color: #000;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.nav-links a {
+    font-size: 0.75rem;
+    color: #6b7280;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
+.nav-links a:hover {
+    color: #000;
+}
+
+/* === Site Footer === */
+
+.site-footer {
+    font-size: 0.75rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    margin-top: 2.5rem;
+    padding: 1.25rem;
+    border-top: 0.85px solid #e5e7eb;
+}
+
+.footer-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-left {
+    color: #9ca3af;
+}
+
+.footer-right {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.footer-right a {
+    color: #9ca3af;
+    text-decoration: none;
+}
+
+.footer-right a:hover {
+    color: #000;
+}
+
+/* ============================================================
+   INDEX / ARCHIVE PAGE
+   Danluu-inspired scannable list: date — title — meta
+   ============================================================ */
+
+.archive-header {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 0.85px solid #e5e7eb;
+}
+
+.archive-header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #000;
+    line-height: 2rem;
+    margin-bottom: 0.375rem;
+}
+
+.archive-header p {
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.report-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.report-row {
+    display: flex;
+    align-items: baseline;
+    gap: 1.25rem;
+    padding: 0.75rem 0;
+    border-bottom: 0.85px solid #e5e7eb;
+    text-decoration: none;
+    color: #000;
+}
+
+.report-row:hover {
+    background: #fff;
+}
+
+.report-row:first-child {
+    border-top: 0.85px solid #e5e7eb;
+}
+
+.row-date {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    white-space: nowrap;
+    min-width: 5.5rem;
+    letter-spacing: 0.025em;
+}
+
+.row-title {
+    font-size: 0.875rem;
+    font-weight: 500;
+    flex: 1;
+    color: #000;
+}
+
+.report-row:hover .row-title {
+    text-decoration: underline;
+    text-decoration-color: #d1d5db;
+    text-underline-offset: 2px;
+}
+
+.row-meta {
+    display: flex;
+    gap: 0.625rem;
+    align-items: baseline;
+    white-space: nowrap;
+}
+
+.row-domain {
+    font-size: 0.75rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 0.85px solid #e5e7eb;
+    padding: 0.0625rem 0.375rem;
+}
+
+.row-reading {
+    font-size: 0.75rem;
+    color: #9ca3af;
+}
+
+/* ============================================================
+   REPORT PAGES — HEADER
+   ============================================================ */
+
+.report-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.875rem;
+    border-bottom: 0.85px solid #e5e7eb;
+}
+
+.report-header--centered {
+    text-align: center;
+}
+
+.report-header .report-type-label {
+    font-size: 0.75rem;
+    color: #166534;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    font-weight: 500;
+    margin-bottom: 0.375rem;
+}
+
+.report-header .report-type-label--amber {
+    color: #854d0e;
+}
+
+.report-header .header-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 1.875rem;
+    margin-bottom: 0.9375rem;
+}
+
+.report-header .sys-label {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+}
+
+.report-header .header-date {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    letter-spacing: 0.025em;
+}
+
+.report-header .title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #000;
+    line-height: 1.2;
+    margin-bottom: 0.9375rem;
+}
+
+.report-header .subtitle {
+    font-size: 1rem;
+    color: #6b7280;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.report-header .meta-block {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.report-header .meta-block--centered {
+    justify-content: center;
+}
+
+.report-header .meta-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.report-header .meta-label {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.125rem;
+}
+
+.report-header .meta-value {
+    font-size: 0.875rem;
+    color: #000;
+}
+
+/* PDF download — secondary button */
+.pdf-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.75rem;
+    color: #000;
+    text-decoration: none;
+    border: 0.85px solid #e5e7eb;
+    padding: 0.5rem 1rem;
+    margin-top: 1.25rem;
+    font-family: inherit;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
+.pdf-download:hover {
+    color: #000;
+    border-color: #9ca3af;
+    background: #fff;
+}
+
+/* ============================================================
+   TABLE OF CONTENTS
+   ============================================================ */
+
+.toc-section {
+    margin-bottom: 1.875rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 0.85px solid #e5e7eb;
+}
+
+.toc-label {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding-bottom: 0.625rem;
+    font-weight: 500;
+}
+
+.toc ul {
+    list-style: none;
+}
+
+.toc li {
+    margin: 0;
+    padding: 0;
+}
+
+.toc > ul > li {
+    margin-bottom: 0.0625rem;
+    padding: 0.375rem 0;
+    border-bottom: 0.85px solid #e5e7eb;
+}
+
+.toc > ul > li:last-child {
+    border-bottom: none;
+}
+
+.toc > ul > li > a {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #000;
+    text-decoration: none;
+}
+
+.toc > ul > li > a:hover {
+    text-decoration: underline;
+    text-decoration-color: #d1d5db;
+    text-underline-offset: 2px;
+}
+
+.toc > ul > li > ul > li > a {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #6b7280;
+    text-decoration: none;
+    padding-left: 1.25rem;
+    display: block;
+    margin-top: 0.125rem;
+}
+
+.toc > ul > li > ul > li > a:hover {
+    color: #000;
+}
+
+/* ============================================================
+   ARTICLE CONTENT — TYPOGRAPHY
+   Optimized for long-form reading: 1.7 line-height, generous spacing
+   ============================================================ */
+
+/* === Headings === */
+
+h1, h2, h3, h4, h5, h6 {
+    color: #000;
+    line-height: 1.3;
+}
+
+.content h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-bottom: 0.85px solid #e5e7eb;
+    padding-bottom: 0.625rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.content h1:first-child {
+    display: none;
+}
+
+h2 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-top: 2.5rem;
+    margin-bottom: 0.625rem;
+    padding-bottom: 0.375rem;
+    border-bottom: 0.85px solid #e5e7eb;
+}
+
+h2::before {
+    content: "// ";
+    color: #9ca3af;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 1.875rem;
+    margin-bottom: 0.375rem;
+    color: #000;
+}
+
+h4 {
+    font-weight: 500;
+    margin-top: 1.25rem;
+    margin-bottom: 0.375rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    font-size: 0.75rem;
+}
+
+/* Permalink anchors */
+.headerlink {
+    color: #d1d5db;
+    text-decoration: none;
+    margin-left: 0.375rem;
+    opacity: 0;
+    transition: all 0.15s;
+    font-weight: 400;
+}
+
+h2:hover .headerlink,
+h3:hover .headerlink {
+    opacity: 1;
+}
+
+.headerlink:hover {
+    color: #9ca3af;
+}
+
+/* === Paragraphs & Inline === */
+
+.content p {
+    margin: 0 0 1.5rem 0;
+    line-height: 1.8;
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+}
+
+p {
+    margin: 0 0 0.625rem 0;
+}
+
+strong {
+    font-weight: 600;
+    color: #000;
+}
+
+em {
+    font-style: italic;
+}
+
+/* Links — differentiate internal vs external */
+a {
+    color: #000;
+    text-decoration: underline;
+    text-decoration-color: #d1d5db;
+    text-underline-offset: 2px;
+}
+
+a:hover {
+    text-decoration-color: #000;
+}
+
+/* External links get a subtle indicator */
+.content a[href^="http"]:not([href*="fabietti.xyz"])::after {
+    content: "\2009\2197";
+    font-size: 0.75rem;
+    color: #9ca3af;
+    vertical-align: super;
+}
+
+/* === Blockquotes === */
+
+blockquote {
+    margin: 1.25rem 0;
+    padding: 0.9375rem 1.25rem;
+    border-left: 2px solid #000;
+    background: transparent;
+    color: #6b7280;
+    font-style: italic;
+    line-height: 1.7;
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+}
+
+blockquote p {
+    margin: 0;
+}
+
+blockquote p + p {
+    margin-top: 0.625rem;
+}
+
+/* === Tables === */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.25rem 0;
+    font-size: 0.875rem;
+}
+
+thead {
+    background: #f3f4f6;
+    border-bottom: 0.85px solid #e5e7eb;
+}
+
+th {
+    font-weight: 500;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: left;
+    padding: 0.75rem 1rem;
+    color: #6b7280;
+}
+
+td {
+    padding: 0.9375rem 1rem;
+    border-bottom: 0.85px solid #e5e7eb;
+    vertical-align: top;
+    color: #000;
+    line-height: 1.6;
+}
+
+tbody tr:hover {
+    background: #fff;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Responsive table wrapper */
+.table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* === Code === */
+
+code {
+    font-family: inherit;
+    font-size: 0.875rem;
+    background: #f3f4f6;
+    border: 0.85px solid #e5e7eb;
+    padding: 0.125rem 0.375rem;
+    color: #166534;
+}
+
+pre {
+    background: #f3f4f6;
+    color: #000;
+    padding: 1.25rem;
+    border: 0.85px solid #e5e7eb;
+    overflow-x: auto;
+    margin: 1.25rem 0;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+}
+
+.highlight {
+    background: #f3f4f6;
+    color: #000;
+    padding: 1.25rem;
+    border: 0.85px solid #e5e7eb;
+    margin: 1.25rem 0;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.highlight pre {
+    background: none;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+/* === Lists === */
+
+.content ul, .content ol {
+    margin: 0.625rem 0 1.5rem 0;
+    padding-left: 1.25rem;
+    line-height: 1.8;
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+}
+
+ul, ol {
+    margin: 0.625rem 0 0.9375rem 0;
+    padding-left: 1.25rem;
+}
+
+li {
+    margin-bottom: 0.375rem;
+}
+
+li > ul, li > ol {
+    margin-top: 0.375rem;
+    margin-bottom: 0;
+}
+
+li::marker {
+    color: #9ca3af;
+}
+
+/* === Horizontal Rules === */
+
+hr {
+    border: none;
+    height: 0.85px;
+    background: #e5e7eb;
+    margin: 2.5rem 0;
+}
+
+/* === Footnotes === */
+
+.footnote {
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: #6b7280;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}
+
+.footnote hr {
+    display: none;
+}
+
+.footnote ol {
+    padding-left: 1.25rem;
+}
+
+.footnote li {
+    margin-bottom: 0.375rem;
+}
+
+.footnote-ref {
+    font-size: 0.75rem;
+    vertical-align: super;
+    text-decoration: none;
+    color: #6b7280;
+}
+
+.footnote-backref {
+    text-decoration: none;
+    color: #9ca3af;
+}
+
+/* ============================================================
+   ADMONITIONS / CALLOUTS
+   ============================================================ */
+
+.admonition {
+    margin: 1.25rem 0;
+    padding: 1.25rem;
+    border-left: 2px solid #9ca3af;
+    background: transparent;
+}
+
+.admonition-title {
+    font-weight: 500;
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin: 0 0 0.375rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.admonition p:last-child {
+    margin-bottom: 0;
+}
+
+.admonition.warning {
+    border-left-color: #eab308;
+}
+
+.admonition.warning .admonition-title {
+    color: #854d0e;
+}
+
+.admonition.danger {
+    border-left-color: #ef4444;
+}
+
+.admonition.danger .admonition-title {
+    color: #991b1b;
+}
+
+.admonition.tip, .admonition.insight {
+    border-left-color: #22c55e;
+}
+
+.admonition.tip .admonition-title,
+.admonition.insight .admonition-title {
+    color: #166534;
+}
+
+.admonition.note {
+    border-left-color: #9ca3af;
+}
+
+.admonition.note .admonition-title {
+    color: #6b7280;
+}
+
+.admonition.thesis {
+    border-left-color: #000;
+}
+
+.admonition.thesis .admonition-title {
+    color: #000;
+}
+
+.admonition.judgment {
+    border-left-color: #eab308;
+}
+
+.admonition.judgment .admonition-title {
+    color: #854d0e;
+}
+
+.admonition.finding {
+    border-left-color: #22c55e;
+}
+
+.admonition.finding .admonition-title {
+    color: #166534;
+}
+
+/* ============================================================
+   IMAGES / FIGURES
+   ============================================================ */
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1.25rem auto;
+}
+
+figure {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+figcaption {
+    font-size: 0.75rem;
+    font-style: normal;
+    color: #9ca3af;
+    margin-top: 0.375rem;
+    text-align: center;
+    letter-spacing: 0.025em;
+}
+
+/* ============================================================
+   TEMPLATE-SPECIFIC OVERRIDES
+   ============================================================ */
+
+/* Academic */
+.academic-content {
+    counter-reset: section;
+}
+
+.academic-content h2 {
+    counter-increment: section;
+    font-size: 1.125rem;
+    color: #000;
+}
+
+.academic-content h2::before {
+    content: counter(section) ". ";
+    font-weight: 600;
+    color: #9ca3af;
+}
+
+.academic-content h3 {
+    font-size: 1rem;
+}
+
+.abstract {
+    margin: 0 0 1.25rem 0;
+    padding: 0.9375rem 0;
+    border-bottom: 0.85px solid #e5e7eb;
+}
+
+.abstract h3 {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #9ca3af;
+    margin: 0 0 0.375rem 0;
+}
+
+.abstract p {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin: 0;
+    line-height: 1.7;
+}
+
+/* Financial */
+.financial-content h2 {
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.financial-content table {
+    font-size: 0.875rem;
+}
+
+.financial-content th {
+    font-size: 0.75rem;
+    padding: 0.625rem 0.9375rem;
+}
+
+.financial-content td {
+    padding: 0.9375rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.financial-content td:not(:first-child),
+.financial-content th:not(:first-child) {
+    text-align: right;
+}
+
+.disclaimer {
+    margin-top: 2.5rem;
+    padding-top: 0.9375rem;
+    border-top: 0.85px solid #e5e7eb;
+    font-size: 0.75rem;
+    color: #9ca3af;
+    line-height: 1.5;
+}
+
+/* Briefing */
+.briefing-content h2 {
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.briefing-content h2::before {
+    content: none;
+}
+
+.briefing-content p {
+    margin: 0 0 0.9375rem 0;
+}
+
+.key-judgments {
+    margin: 0 0 1.25rem 0;
+    padding: 1.25rem;
+    background: transparent;
+    border: 0.85px solid #e5e7eb;
+    border-top: 2px solid #000;
+}
+
+.key-judgments h3 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #000;
+    margin: 0 0 0.625rem 0;
+}
+
+.key-judgments ul {
+    margin: 0;
+    padding-left: 1.25rem;
+}
+
+.key-judgments li {
+    font-size: 0.875rem;
+    margin-bottom: 0.375rem;
+    line-height: 1.6;
+}
+
+.key-findings {
+    margin: 0 0 1.25rem 0;
+    padding: 1.25rem;
+    background: transparent;
+    border: 0.85px solid #e5e7eb;
+    border-left: 2px solid #000;
+}
+
+.key-findings h3 {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #9ca3af;
+    margin: 0 0 0.625rem 0;
+}
+
+.key-findings ul {
+    margin: 0;
+    padding-left: 1.25rem;
+}
+
+.key-findings li {
+    font-size: 0.875rem;
+    margin-bottom: 0.375rem;
+    line-height: 1.6;
+}
+
+/* Confidence badges (briefing) */
+.confidence-high,
+.confidence-moderate,
+.confidence-low {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.0625rem 0.375rem;
+    vertical-align: middle;
+    margin-left: 0.375rem;
+    border: 0.85px solid;
+}
+
+.confidence-high {
+    color: #166534;
+    border-color: #166534;
+}
+
+.confidence-moderate {
+    color: #854d0e;
+    border-color: #854d0e;
+}
+
+.confidence-low {
+    color: #991b1b;
+    border-color: #991b1b;
+}
+
+.classification-mark {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 0.9375rem;
+}
+
+.source-note {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    margin-top: 2.5rem;
+    padding-top: 0.9375rem;
+    border-top: 0.85px solid #e5e7eb;
+    line-height: 1.5;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 640px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    /* Nav: stack and ensure touch-friendly targets */
+    .nav-inner {
+        flex-direction: column;
+        gap: 0.375rem;
+        align-items: flex-start;
+    }
+
+    .site-nav .logo-link {
+        padding: 0.375rem 0;
+    }
+
+    .nav-links a {
+        padding: 0.5rem 0;
+        display: inline-block;
+    }
+
+    /* Archive page */
+    .archive-header {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .archive-header h1 {
+        font-size: 1.25rem;
+        line-height: 1.6;
+    }
+
+    /* Report rows: stack vertically */
+    .report-row {
+        flex-direction: column;
+        gap: 0.25rem;
+        padding: 0.875rem 0;
+    }
+
+    .row-date {
+        min-width: auto;
+    }
+
+    .row-meta {
+        gap: 0.375rem;
+    }
+
+    /* Report header */
+    .report-header .title {
+        font-size: 1.5rem;
+        line-height: 1.2;
+    }
+
+    .report-header .header-top-row {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .report-header .meta-block {
+        flex-direction: column;
+        gap: 0.625rem;
+    }
+
+    /* Tables: keep readable */
+    table {
+        font-size: 0.8125rem;
+    }
+
+    th {
+        padding: 0.625rem;
+    }
+
+    td {
+        padding: 0.75rem 0.625rem;
+    }
+
+    /* Blockquotes & admonitions: tighter on mobile */
+    blockquote {
+        padding: 0.75rem 1rem;
+    }
+
+    .admonition {
+        padding: 1rem;
+    }
+
+    /* Footer: stack */
+    .footer-inner {
+        flex-direction: column;
+        gap: 0.625rem;
+        text-align: center;
+    }
+
+    .footer-right {
+        justify-content: center;
+    }
+
+    .footer-right a {
+        padding: 0.375rem 0;
+    }
+
+    /* PDF download: ensure tap target */
+    .pdf-download {
+        padding: 0.625rem 1rem;
+    }
+}
