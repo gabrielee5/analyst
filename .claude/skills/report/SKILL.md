@@ -68,6 +68,9 @@ Before anything else, classify the topic and create a domain profile that will g
 
 ## Writing Style
 <Prose style guidance specific to this domain. E.g., "Data-heavy, forward-looking, lead with investment thesis" or "Measured, evidence-weighted, acknowledge historiographic debates" or "Precise, confidence-calibrated, distinguish assessed from confirmed".>
+
+## Charts
+<List of chart types that would strengthen this report. Be specific about what data to visualize. E.g., for financial: "Revenue and earnings over time, stock price with key events, market share comparison vs peers, cost structure breakdown." For scientific: "Experimental results comparison, adoption/growth curves, performance benchmarks." For geopolitical: "Timeline of escalation events, military balance comparison, trade flow volumes." For historical: "Population/production trends, territorial changes over time, economic indicators across eras." If the topic is purely qualitative with no numeric data, write "None expected — qualitative analysis.">
 ```
 
 3. Print status: `🎯 Domain detected: <Domain> — <Report Type> (Persona: <Analyst Persona>)`
@@ -143,7 +146,51 @@ This is the core research phase. **You MUST spawn parallel sub-agents** — one 
    - Use admonitions (`!!! insight "Key Insight"`, `!!! thesis "Investment Thesis"`, `!!! judgment "Key Assessment"`) for standout findings — choose the type that fits the domain.
    - Vary sentence length. Prefer prose over lists where it reads better.
    - Aim for 3,000–5,000 words for standard depth.
-7. Print status: `✍️ Report draft complete.`
+7. **Generate `charts.json`** alongside the report. Read the **Charts** section of the domain profile to determine what visualizations are needed. Extract actual numeric data from the research notes and structure it as chart specs. See the `/synthesize` skill for the full `charts.json` format. Every data table with 5+ rows of numeric time-series data should have a companion chart.
+8. Print status: `✍️ Report draft complete.`
+
+## Phase 4.5: Chart Generation
+
+After synthesis, generate data visualizations from the chart specification.
+
+1. Check if `charts.json` exists in the project folder. If it does not exist (e.g., the report is purely qualitative), skip this phase.
+2. If `charts.json` exists, generate all charts by writing and running a Python script (`generate_charts.py`) in the project folder. The script must:
+   - Read `charts.json` from the same directory
+   - Use matplotlib with the project's standard chart style (monospace font, #fafafa background, thin axes, subtle grid)
+   - Save each chart as `output/charts/{id}.png` at 200 DPI
+   - Support all chart types: `line` (with fill_between), `bar` (green/red for +/-), `grouped_bar`, `dual_line`
+   - Apply annotations from the spec
+   - Use `figsize=(8, 3.5)` for standard charts, `figsize=(6, 3.5)` for small comparison charts
+
+   **Standard chart style to use in the script:**
+   ```python
+   plt.rcParams.update({
+       'font.family': 'monospace',
+       'font.size': 9,
+       'axes.facecolor': '#fafafa',
+       'figure.facecolor': 'white',
+       'axes.edgecolor': '#333333',
+       'axes.linewidth': 0.8,
+       'grid.color': '#e0e0e0',
+       'grid.linewidth': 0.5,
+       'text.color': '#1a1a1a',
+       'axes.labelcolor': '#1a1a1a',
+       'xtick.color': '#333333',
+       'ytick.color': '#333333',
+   })
+   ```
+
+3. After generating the PNGs, embed them into `report.md`. For each chart in the spec:
+   - Find the `section_anchor` heading in the markdown
+   - Insert `![{title}](file://{absolute_path_to_charts_dir}/{id}.png)` at the position specified by `placement`:
+     - `"after_heading"` — immediately after the heading line
+     - `"before_table"` — before the first `|` table in that section
+     - `"before_paragraph:N"` — before the Nth paragraph in that section
+   - Use **absolute `file://` paths** — WeasyPrint requires these since its `base_url` is the templates directory.
+
+4. Run `uv run python research/<slug>/generate_charts.py` to generate all chart PNGs.
+5. Verify the charts were created: `ls research/<slug>/output/charts/`
+6. Print status: `Charts generated: N visualizations embedded in report.`
 
 ## Phase 5: Review & Polish
 

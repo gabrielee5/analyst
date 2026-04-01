@@ -74,6 +74,53 @@ report_type: "<from domain-profile.md, e.g. 'Equity Research Note', 'Intelligenc
 - **Use domain-appropriate admonitions**: `!!! insight` for general insights, `!!! thesis` for investment theses, `!!! judgment` for intelligence assessments, `!!! finding` for key findings.
 - **Target 3,000–5,000 words** for standard-depth reports.
 
-6. **Self-review pass**: Before saving, read through the draft once for flow and coherence. Fix awkward transitions, redundant passages, and weak openings.
+6. **Generate a chart specification** alongside the report. Data-rich reports need visualizations — not just tables. After writing `report.md`, create a file called `charts.json` in the project folder that specifies every chart the report needs.
 
-7. **Save** as `report.md` in the project folder, overwriting the starter template.
+   **When to include charts:** Any report that contains quantitative data over time, comparisons between entities, or progression/decline narratives should include charts. Most reports will benefit from 3-10 charts. Skip charts only if the report is purely qualitative (e.g., a legal analysis with no numeric data).
+
+   **Chart spec format** (`charts.json`):
+   ```json
+   [
+     {
+       "id": "revenue_arc",
+       "title": "Company Revenue (1990-2024)",
+       "type": "line",
+       "section_anchor": "## Financial Performance",
+       "placement": "before_table",
+       "data": {
+         "x": [1990, 1995, 2000, 2005, 2010, 2015, 2020, 2024],
+         "y": [1.2, 2.3, 4.5, 6.1, 5.8, 7.2, 8.9, 10.1]
+       },
+       "labels": {"x": "", "y": "Revenue ($B)"},
+       "annotations": {"2000": "IPO", "2020": "COVID dip"},
+       "color": "#2563eb"
+     }
+   ]
+   ```
+
+   **Supported chart types:**
+   - `line` — time series, trends, progressions (fill_between area shading by default)
+   - `bar` — comparisons, discrete data points (green for positive, red for negative when data includes both)
+   - `grouped_bar` — multi-series comparisons (provide `data.series` as list of `{label, values}`)
+   - `dual_line` — two related time series on the same axes (provide `data.y2`, `labels.y2`, `color2`)
+
+   **Rules for chart specs:**
+   - Every chart needs an `id` (used for the filename: `{id}.png`)
+   - `section_anchor` is the markdown heading where the chart should be inserted (exact match)
+   - `placement` is either `"before_table"` (insert before the first table in that section), `"after_heading"` (insert right after the heading), or `"before_paragraph:N"` (before the Nth paragraph)
+   - Data must be numeric — extract exact values from the research notes. Do not use placeholder data.
+   - `annotations` is optional — use it to label key events on the chart (keys are x-values, values are labels)
+   - Keep `title` concise (under 60 chars). The chart title is rendered on the figure itself.
+   - Use domain-appropriate colors: blue (`#2563eb`) for primary data, red (`#dc2626`) for negative/losses, green (`#16a34a`) for positive/gains, purple (`#7c3aed`) for stock prices, orange (`#ea580c`) for secondary metrics.
+
+   **What makes a good chart spec:**
+   - Revenue/earnings/stock price over time (line)
+   - Profit/loss bars showing swings between positive and negative (bar)
+   - Market share comparisons (grouped_bar)
+   - Employment/production volume trends (line)
+   - Competitive comparisons across entities (grouped_bar or dual_line)
+   - Any data table in the report with 5+ rows of numeric time-series data is a candidate for a chart
+
+7. **Self-review pass**: Before saving, read through the draft once for flow and coherence. Fix awkward transitions, redundant passages, and weak openings.
+
+8. **Save** `report.md` in the project folder (overwriting the starter template) and `charts.json` alongside it.
